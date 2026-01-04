@@ -43,9 +43,10 @@ app.get("/api/library/counts", async (req, res) => {
 
 app.get("/api/library/author", async (req, res) => {
   let sql = `
-  SELECT DISTINCT(author.name) AS authorname
-  FROM author
-  ORDER BY name ASC
+   SELECT MIN(author.author_id) AS author_id, author.name AS authorname
+    FROM author
+    GROUP BY author.name
+    ORDER BY author.name ASC
   `; 
   try {
     let [rows] = await connection.query(sql);
@@ -73,10 +74,9 @@ app.get("/api/library/genre", async (req, res) => {
 
 app.get("/api/library/alldata", async (req, res) => {
   let sql = `
-  SELECT book.*, author.author_id, author.name, publisher.pub_name as publisher, publisher.pub_id
+  SELECT book.*, author.author_id, author.name
   FROM book
   LEFT JOIN author ON author.author_id = book.author_id
-  LEFT JOIN publisher ON publisher.pub_id = book.pub_id
   `;
   try {
     let result = await connection.query(sql);
@@ -85,6 +85,24 @@ app.get("/api/library/alldata", async (req, res) => {
   catch (err) {
     res.status(500).json(err);
   }
+
+
+
+  /* Upload data from front to database */
+  app.post('/api/addBook', async(req, res) => {
+    console.log(req.body);
+    const {img, title, pages, rating, category, status, series, seriesPosition, comment, author_id, pub_id} = req.body;
+    
+    try {
+      let sql = 'INSERT INTO USER (img, title, pages, rating, category, status, series, seriesPosition, comment, author_id) VALUES (?,?,?,?,?,?,?,?,?)';
+    }
+    catch(err) {
+      res.status(500).json(err);
+    }
+
+  })
+
+
 });
 
 

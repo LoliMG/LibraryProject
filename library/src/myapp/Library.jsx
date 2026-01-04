@@ -15,7 +15,7 @@ import { ErrorPage } from './pages/ErrorPage/ErrorPage';
 
 export const Library = () => {
   const [books, setBooks] = useState([]);
-  const [status, setStatus] = useState({});
+  const [status, setStatus] = useState([]);
   const [author, setAuthor] = useState([]);
   const [genre, setGenre] = useState([]);
 

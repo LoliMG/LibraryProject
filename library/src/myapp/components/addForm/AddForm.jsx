@@ -15,11 +15,20 @@ const initialValue = {
   seriesPosition: "",
   comment: "",
   author_id: "",
-  pub_id:""
+  pub_id: ""
 }
 
 export const AddForm = ({ setform, author, genre }) => {
   const [newBook, setNewBook] = useState(initialValue);
+
+  const handleBook = (e) => {
+    const { name, value } = e.target;
+    setNewBook({ ...newBook, [name]: value });
+  }
+
+  const submit = () => {
+
+  }
 
   return (
     <div
@@ -33,55 +42,97 @@ export const AddForm = ({ setform, author, genre }) => {
       >
         <Card.Header closeButton>
           <Card.Title className='title pb-2'> <h2> Añadir nuevo libro</h2></Card.Title>
-          <Card.Subtitle className='violetText'> <span className='text-danger'> * </span>  Información obligatoria.</Card.Subtitle>
+          <Card.Subtitle className='violetText'>
+            <span className='text-danger'> * </span>  Información obligatoria.
+          </Card.Subtitle>
         </Card.Header>
 
         <Card.Body className='pt-4 formbody violetText'>
 
           <Form.Group className="mb-3">
             <Form.Label>Título del libro <span className='text-danger'>*</span> </Form.Label>
-            <Form.Control type="text" placeholder="El Hobbit" className='custominput' required />
+            <Form.Control
+              type="text"
+              placeholder="El Hobbit"
+              className='custominput'
+              required
+              name='title'
+              value={newBook.title}
+              onChange={handleBook}
+            />
           </Form.Group>
 
           <Form.Group className="mb-3">
-            <Form.Label>Saga </Form.Label>
-            <Form.Control type="text" placeholder="Empíreo" className='custominput' />
+            <Form.Label>Saga</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Empíreo"
+              className='custominput'
+              name='series'
+              value={newBook.series}
+              onChange={handleBook}
+            />
           </Form.Group>
 
           <div className='d-flex justify-content-between gap-3'>
             <Form.Group className="mb-3" style={{ width: '30%' }}>
               <Form.Label>Orden en la saga</Form.Label>
-              <Form.Control type="number" placeholder="0" className='custominput' required />
+              <Form.Control
+                type="number"
+                placeholder="0"
+                className='custominput'
+                required
+                name='seriesPosition'
+                value={newBook.seriesPosition}
+                onChange={handleBook}
+              />
             </Form.Group>
 
             <Form.Group className="mb-3" style={{ width: '30%' }}>
-              <Form.Label>Autor <span className='text-danger'>*</span> </Form.Label>
-              <Form.Select aria-label="Estado del libro" className='custominput' required>
-                {author?.map((elem, idx) => {
-                  return (
-                    <option key={idx}> {elem.authorname} </option>
-                  )
-                })}
-              </Form.Select>
+              <Form.Label>Páginas <span className='text-danger'>*</span> </Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="0"
+                className='custominput'
+                required
+                name='pages'
+                value={newBook.pages}
+                onChange={handleBook}
+              />
             </Form.Group>
 
-            <Form.Group className="mb-3" style={{ width: '30%' }}>
+            <Form.Group className="mb-3" style={{ width: '35%' }}>
               <Form.Label>Género <span className='text-danger'>*</span> </Form.Label>
-              <Form.Select aria-label="Estado del libro" className='custominput' required>
+              <Form.Select
+                aria-label="Estado del libro"
+                className='custominput'
+                required
+                name='category'
+                value={newBook.category}
+                onChange={handleBook}
+              >
                 {genre?.map((elem, idx) => {
                   return (
-                    <option key={idx}> {elem.bookgenre} </option>
+                    <option key={idx}
+                      value={elem.bookgenre}
+                    > {elem.bookgenre} </option>
                   )
                 })}
               </Form.Select>
             </Form.Group>
-
           </div>
 
           <div className='d-flex justify-content-between gap-3'>
             <Form.Group className="mb-3" style={{ width: '50%' }}>
               <Form.Label>Estado del libro <span className='text-danger'>*</span> </Form.Label>
-              <Form.Select aria-label="Estado del libro" className='custominput' required>
+              <Form.Select
+                aria-label="Estado del libro"
+                className='custominput'
+                required
+                name='status'
+                value={newBook.status}
+                onChange={handleBook}
+              >
                 <option value="leyendo">Leyendo</option>
                 <option value="completado">Completado</option>
                 <option value="pendiente">Pendiente</option>
@@ -90,15 +141,39 @@ export const AddForm = ({ setform, author, genre }) => {
             </Form.Group>
 
             <Form.Group className="mb-3" style={{ width: '50%' }}>
-              <Form.Label>Número de páginas <span className='text-danger'>*</span> </Form.Label>
-              <Form.Control type="number" placeholder="0" className='custominput' required />
+              <Form.Label>Autor <span className='text-danger'>*</span> </Form.Label>
+              <Form.Select
+                aria-label="Estado del libro"
+                className='custominput'
+                required
+                name='author_id'
+                value={newBook.author_id}
+                onChange={handleBook}
+              >
+                {author?.map((elem, idx) => {
+                  return (
+                    <option key={idx}
+                      value={elem.author_id}>
+                      {elem.authorname} </option>
+                  )
+                })}
+              </Form.Select>
             </Form.Group>
+
+
           </div>
 
           {/* IMAGE */}
           <Form.Group className="mb-3 cus">
-            <Form.Label >Añade una imagen  <span className='text-danger'> * </span> </Form.Label>
-            <Form.Control type="file" className='custominput' required />
+            <Form.Label >Añade el nombre de la imagen  <span className='text-danger'> * </span> </Form.Label>
+            <Form.Control
+              type="text"
+              className='custominput'
+              required
+              name='img'
+              value={newBook.img}
+              onChange={handleBook}
+            />
           </Form.Group>
 
           <div className="commentBox">
@@ -109,10 +184,12 @@ export const AddForm = ({ setform, author, genre }) => {
                 rows={3}
                 placeholder='Comentario sobre el libro.'
                 className='custominput'
+                name='comment'
+                value={newBook.comment}
+                onChange={handleBook}
               />
             </Form.Group>
           </div>
-
 
 
         </Card.Body>
@@ -121,7 +198,11 @@ export const AddForm = ({ setform, author, genre }) => {
           <Button variant="secondary"
             onClick={() => setform(false)}
           >Cancelar</Button>
-          <button className='buttonOrange'>Añadir libro</button>
+          <button
+            className='buttonOrange'
+            onClick={submit}
+          >Añadir libro
+          </button>
         </Card.Footer>
       </Card>
     </div >
