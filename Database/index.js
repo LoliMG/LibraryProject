@@ -1,0 +1,99 @@
+import express from 'express';
+import connection from './config/db.js';
+import cors from 'cors';
+import bcrypt, { hash } from 'bcrypt';
+import jwt from 'jsonwebtoken';
+
+import {fileURLToPath} from 'url';
+import {dirname} from 'path';
+import { uploadImage } from './middleware/multer.js';
+import { log } from 'console';
+import { verify } from 'crypto';
+
+/* IMPORTS */
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+const port = 4000;
+const app = express();
+
+//Middleware para permitir cors
+app.use(cors());
+
+//da permiso para recibir json de fuera
+app.use(express.json());
+
+app.get("/api/library/counts", async (req, res) => {
+  let sql = `
+  SELECT 
+  SUM(book.status = 'leyendo') as leyendo, 
+  SUM(book.status = 'completado') as completado,
+  COUNT(book_id) as total,
+  SUM(book.category = 'romantasy') as romantasy
+  FROM book
+  `;
+  try {
+    let [rows] = await connection.query(sql);
+    res.status(200).json(rows[0] || { leyendo: 0, completado: 0 });
+  }
+  catch (error) {
+     console.error('Error en /api/library:', error);
+    res.status(500).json(error);
+  }
+}); 
+
+app.get("/api/library/author", async (req, res) => {
+  let sql = `
+  SELECT DISTINCT(author.name) AS authorname
+  FROM author
+  ORDER BY name ASC
+  `; 
+  try {
+    let [rows] = await connection.query(sql);
+    res.status(200).json(rows);
+  }
+  catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+app.get("/api/library/genre", async (req, res) => {
+  let sql = `
+  SELECT DISTINCT(book.category) AS bookgenre
+  FROM book
+  ORDER BY category ASC
+  `; 
+  try {
+    let [rows] = await connection.query(sql);
+    res.status(200).json(rows);
+  }
+  catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+app.get("/api/library/alldata", async (req, res) => {
+  let sql = `
+  SELECT book.*, author.author_id, author.name, publisher.pub_name as publisher, publisher.pub_id
+  FROM book
+  LEFT JOIN author ON author.author_id = book.author_id
+  LEFT JOIN publisher ON publisher.pub_id = book.pub_id
+  `;
+  try {
+    let result = await connection.query(sql);
+    res.status(200).json(result[0]);
+  }
+  catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+
+
+
+
+
+
+app.use(express.static(__dirname + "/public"));
+
+app.listen(port, ()=>console.log("Corriendo por el " + port));

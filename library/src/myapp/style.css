@@ -1,0 +1,33 @@
+.common {
+  background-color: rgb(2, 6, 23);
+  color: white;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: 15rem 4fr;
+}
+
+.title {
+  color: rgb(254, 243, 199);
+}
+
+.violetText {
+  color: rgb(158, 172, 241);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 17rem 4fr;
+}
+
+/* FONT */
+.almendra-regular {
+  font-family: "Almendra", serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.almendra-bold {
+  font-family: "Almendra", serif;
+  font-weight: 800;
+  font-style: normal;
+}

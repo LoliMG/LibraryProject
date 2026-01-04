@@ -1,0 +1,68 @@
+.bookcard {
+  background-color: rgb(9, 15, 32);
+  color: white;
+  border: 1px solid rgb(27, 32, 74);
+
+
+  &:hover {
+    box-shadow: 0 5px 20px rgba(69, 80, 180, 0.586);
+    border: 1px solid rgb(114, 85, 11);
+    transform: translateY(-5px);
+    transition-duration: 0.8s;
+
+    .cardtitle {
+      color: rgb(244, 198, 79);
+    }
+  }
+
+  .img-wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  .img-wrapper img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .img-badge {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.4rem;
+    font-size: 0.85rem;
+    pointer-events: none;
+  }
+
+  .onRead {
+    background-color: rgb(89, 71, 51);
+    color: rgb(216, 180, 70);
+    border: rgb(216, 180, 70);
+    border-radius: 0.5rem;
+  }
+
+  .completed {
+    background-color: rgb(46, 48, 42);
+    color: rgb(125, 221, 179);
+    border: rgb(77, 114, 93);
+    border-radius: 0.5rem;
+  }
+
+  .pending {
+    background-color: rgb(39, 46, 58);
+    color: rgb(163, 177, 247);
+    border: rgb(91, 98, 145);
+    border-radius: 0.5rem;
+  }
+}
+
+.category {
+  background-color: rgb(18, 20, 52);
+  padding: 0.2rem;
+  padding-inline: 0.5rem;
+  width: fit-content;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(34, 36, 89);
+}

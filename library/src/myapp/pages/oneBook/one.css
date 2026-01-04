@@ -1,0 +1,104 @@
+.gridOneBook {
+  margin-left: 5rem;
+  padding: 3rem;
+  display: grid;
+  padding-top: 5rem;
+  grid-template-columns: 1fr 3fr;
+  justify-content: center;
+  gap: 3rem;
+
+  img {
+    height: 82dvh;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgb(165, 142, 223);
+  }
+
+  .genre {
+    background-color: rgb(18, 20, 52);
+    padding: 0.2rem;
+    padding-inline: 0.5rem;
+    width: fit-content;
+    border-radius: 0.5rem;
+    border: 1px solid rgb(34, 36, 89);
+  }
+
+  .commentBox {
+    background-color: rgb(18, 23, 49);
+    border: 1px solid rgb(35, 39, 87);
+    border-radius: 1rem;
+    padding: 1rem;
+    min-height: 5rem;
+    max-width: 70%;
+  }
+
+}
+
+.miniPhotos {
+  padding: 5rem;
+  width: 90%;
+
+
+  img {
+    height: 13rem;
+    border-radius: 1rem;
+
+    &:hover {
+      box-shadow: 0 5px 20px rgba(69, 80, 180, 0.586);
+      border: 3px solid rgb(180, 106, 16);
+      transform: translateY(-5px);
+      transition-duration: 0.8s;
+    }
+  }
+}
+
+.buttonLilac {
+  text-decoration: none;
+  color: white;
+  padding: 0.5rem;
+  padding-inline: 1.5rem;
+  background-color: rgb(35, 39, 87);
+  border: 1px solid rgb(150, 128, 205);
+  border-radius: 0.5rem;
+  margin-right: 50px;
+
+  &:hover {
+    background-color: rgb(18, 23, 49);
+    transition: 0.5s;
+  }
+}
+
+.onRead {
+  width: fit-content;
+  align-content: center;
+  padding: 0.2rem;
+  padding-inline: 0.5rem;
+  max-height: 2rem;
+  background-color: rgb(89, 71, 51);
+  color: rgb(216, 180, 70);
+  border: 1px solid rgb(216, 180, 70);
+  border-radius: 0.5rem;
+}
+
+.completed {
+  width: fit-content;
+  align-content: center;
+  padding: 0.2rem;
+  padding-inline: 0.5rem;
+  max-height: 2rem;
+  background-color: rgb(46, 48, 42);
+  color: rgb(125, 221, 179);
+  border: 1px solid rgb(77, 114, 93);
+  border-radius: 0.5rem;
+}
+
+.pending {
+  width: fit-content;
+  align-content: center;
+  padding: 0.2rem;
+  padding-inline: 0.5rem;
+  max-height: 2rem;
+  background-color: rgb(39, 46, 58);
+  color: rgb(163, 177, 247);
+  border: 1px solid rgb(91, 98, 145);
+  border-radius: 0.5rem;
+}
