@@ -3,11 +3,12 @@ import './one.css';
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 
-export const OneBook = ({ books }) => {
+export const OneBook = ({ books,/*  status  */ }) => {
   const { id } = useParams();
   const thisID = Number(id);
 
   const book = books.find(e => e.book_id === thisID);
+
 
   if (!book) {
     return <div className='loading'>Cargando o libro no encontrado.</div>;
@@ -36,7 +37,7 @@ export const OneBook = ({ books }) => {
             > {book.status}
             </h6>
           </div>
-          
+
           {book.rating != undefined ?
             <div>
               <p className='violetText'> Puntuación: </p>
@@ -60,7 +61,7 @@ export const OneBook = ({ books }) => {
           >Volver
           </Link>
           <Link className='buttonLilac'
-            to={`/book/${thisID == 1 ? books.length : thisID - 1}`}
+            to={`/book/${thisID === 1 ? books.length : thisID - 1}`}
           >Anterior
           </Link>
           <Link className='buttonLilac'

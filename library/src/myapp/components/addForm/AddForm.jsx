@@ -3,22 +3,22 @@ import Modal from 'react-bootstrap/Modal';
 import './add.css';
 import { Card, Form } from 'react-bootstrap';
 import { useState } from 'react';
+import axios from 'axios';
 
 const initialValue = {
   img: "",
   title: "",
-  pages: "",
-  rating: "",
+  pages: null,
+  rating: null,
   category: "",
   status: "",
   series: "",
-  seriesPosition: "",
+  seriesPosition: null,
   comment: "",
-  author_id: "",
-  pub_id: ""
+  author_id: ""
 }
 
-export const AddForm = ({ setform, author, genre }) => {
+export const AddForm = ({ setform, author, /* genre */ }) => {
   const [newBook, setNewBook] = useState(initialValue);
 
   const handleBook = (e) => {
@@ -26,7 +26,14 @@ export const AddForm = ({ setform, author, genre }) => {
     setNewBook({ ...newBook, [name]: value });
   }
 
-  const submit = () => {
+  const submit = async () => {
+    try {
+      const res = await axios.post('http://localhost:4000/api/addBook', newBook);
+      setform(false);
+    }
+    catch (error) {
+      console.log(error);
+    }
 
   }
 
@@ -81,7 +88,6 @@ export const AddForm = ({ setform, author, genre }) => {
                 type="number"
                 placeholder="0"
                 className='custominput'
-                required
                 name='seriesPosition'
                 value={newBook.seriesPosition}
                 onChange={handleBook}
@@ -103,22 +109,22 @@ export const AddForm = ({ setform, author, genre }) => {
 
             <Form.Group className="mb-3" style={{ width: '35%' }}>
               <Form.Label>Género <span className='text-danger'>*</span> </Form.Label>
-              <Form.Select
+              <Form.Control
                 aria-label="Estado del libro"
                 className='custominput'
                 required
                 name='category'
                 value={newBook.category}
                 onChange={handleBook}
-              >
-                {genre?.map((elem, idx) => {
+              />
+              {/*   {genre?.map((elem, idx) => {
                   return (
                     <option key={idx}
                       value={elem.bookgenre}
                     > {elem.bookgenre} </option>
                   )
                 })}
-              </Form.Select>
+              </Form.Control> */}
             </Form.Group>
           </div>
 
@@ -169,7 +175,6 @@ export const AddForm = ({ setform, author, genre }) => {
             <Form.Control
               type="text"
               className='custominput'
-              required
               name='img'
               value={newBook.img}
               onChange={handleBook}

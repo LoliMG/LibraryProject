@@ -93,8 +93,15 @@ export const Library = () => {
             <Route path='pending' element={<Pending books={books} />}></Route>
           </Route>
 
-          <Route path='/book/:id' element={<OneBook books={books} />}></Route>
-          <Route path='/stats' element={<StatsPage books={books} status={status} />} />
+          <Route path='/book/:id' element={<OneBook books={books} status={status} />}></Route>
+          <Route
+            path='/stats'
+            element={
+              <StatsPage
+                books={books}
+                status={status}
+                author={author}
+              />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </div>

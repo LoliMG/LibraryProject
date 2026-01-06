@@ -3,7 +3,6 @@
   color: white;
   border: 1px solid rgb(27, 32, 74);
 
-
   &:hover {
     box-shadow: 0 5px 20px rgba(69, 80, 180, 0.586);
     border: 1px solid rgb(114, 85, 11);

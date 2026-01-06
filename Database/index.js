@@ -28,7 +28,9 @@ app.get("/api/library/counts", async (req, res) => {
   SUM(book.status = 'leyendo') as leyendo, 
   SUM(book.status = 'completado') as completado,
   COUNT(book_id) as total,
-  SUM(book.category = 'romantasy') as romantasy
+  SUM(book.category = 'romantasy') as romantasy,
+  SUM(book.category = 'romance') as romance,
+  SUM(book.category = 'fantasia') as fantasia
   FROM book
   `;
   try {
@@ -39,7 +41,7 @@ app.get("/api/library/counts", async (req, res) => {
      console.error('Error en /api/library:', error);
     res.status(500).json(error);
   }
-}); 
+});
 
 app.get("/api/library/author", async (req, res) => {
   let sql = `
@@ -74,7 +76,7 @@ app.get("/api/library/genre", async (req, res) => {
 
 app.get("/api/library/alldata", async (req, res) => {
   let sql = `
-  SELECT book.*, author.author_id, author.name
+  SELECT book.*
   FROM book
   LEFT JOIN author ON author.author_id = book.author_id
   `;
@@ -85,27 +87,24 @@ app.get("/api/library/alldata", async (req, res) => {
   catch (err) {
     res.status(500).json(err);
   }
-
-
-
-  /* Upload data from front to database */
-  app.post('/api/addBook', async(req, res) => {
-    console.log(req.body);
-    const {img, title, pages, rating, category, status, series, seriesPosition, comment, author_id, pub_id} = req.body;
-    
-    try {
-      let sql = 'INSERT INTO USER (img, title, pages, rating, category, status, series, seriesPosition, comment, author_id) VALUES (?,?,?,?,?,?,?,?,?)';
-    }
-    catch(err) {
-      res.status(500).json(err);
-    }
-
-  })
-
-
 });
 
 
+/* Upload data from front to database */
+app.post('/api/addBook', async(req, res) => {
+  const {img, title, pages, rating, category, status, series, seriesPosition, comment, author_id} = req.body;
+  
+  try {
+    let sql = `INSERT INTO book (img, title, pages, rating, category, status, series, seriesPosition, comment, author_id) VALUES (?,?,?,?,?,?,?,?,?,?)`;
+   let values = [img, title, pages, rating, category, status, series, seriesPosition, comment, author_id];
+    let result = await connection.query(sql, values);
+    console.log(result);
+    res.status(200).json("Data sent correctly.")
+  }
+  catch(err) {
+    res.status(500).json(err);
+  }
+})
 
 
 

@@ -35,9 +35,20 @@ export const StatsPage = ({ status }) => {
             <p className='violetText'>
               Géneros Favoritos
             </p>
-            <div className='d-flex justify-content-between'>
-              <p> <span className='numberCategory fs-4'>1. </span> Romantasy:</p>
-              <p className='violetText'> {status.romantasy} libros </p>
+
+            <div>
+              <div className='d-flex justify-content-between '>
+                <p> <span className='numberCategory fs-4'>1. </span> Romantasy:</p>
+                <p className='violetText'> {status.romantasy} libros </p>
+              </div>
+              <div className='d-flex justify-content-between '>
+                <p> <span className='numberCategory fs-4'>2. </span> Romance:</p>
+                <p className='violetText'> {status.romance} libros </p>
+              </div>
+              <div className='d-flex justify-content-between '>
+                <p> <span className='numberCategory fs-4'> 3. </span> Fantasía:</p>
+                <p className='violetText'> {status.fantasia} libros </p>
+              </div>
             </div>
           </Col>
         </Row>
