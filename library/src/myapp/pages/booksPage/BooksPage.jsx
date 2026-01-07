@@ -36,15 +36,16 @@ export const BooksPage = ({ status, author, genre }) => {
       </div>
 
       <p className='violetText'>
-        Actualmente estás leyendo
+        Ahora estás leyendo
         <span className='text-warning'> {status.leyendo} </span>
-        {status.leyendo > 1 ? 'libros' : 'libro'} y has terminado
-        <span className='text-warning'> {status.completado} </span>.
+        {status.leyendo > 1 ? 'libros' : 'libro'}, has terminado
+        <span className='text-warning'> {status.completado} </span> y te esperan  <span className='text-warning'> {status.pendiente} </span> libros.
       </p>
 
 
 
       <section className='filterBox'>
+        {/* BUSCAR CÓMO HACER UN FILTRADO POR INPUT... */}
         <InputGroup className="mb-3">
           <InputGroup.Text
             className='inputText fs-5'
@@ -52,7 +53,7 @@ export const BooksPage = ({ status, author, genre }) => {
           </InputGroup.Text>
           <Form.Control
             type="text"
-            placeholder=' Buscar un libro o autor...'
+            placeholder=' Buscar un libro...'
             className='input'
           />
         </InputGroup>
@@ -97,15 +98,15 @@ export const BooksPage = ({ status, author, genre }) => {
             </Dropdown.Item>
             <Dropdown.Item
               className='edited-option'
-            >Mejor valorados
+            >Cantidad de páginas
             </Dropdown.Item>
             <Dropdown.Item
               className='edited-option'
-            >Peor valorados
+            >Mayor rating
             </Dropdown.Item>
             <Dropdown.Item
               className='edited-option'
-            >Más recientes
+            >
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>

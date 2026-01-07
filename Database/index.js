@@ -26,11 +26,16 @@ app.get("/api/library/counts", async (req, res) => {
   let sql = `
   SELECT 
   SUM(book.status = 'leyendo') as leyendo, 
-  SUM(book.status = 'completado') as completado,
+  SUM(book.status = 'completado') as completado,  
+  SUM(book.status = 'pendiente') as pendiente,
   COUNT(book_id) as total,
   SUM(book.category = 'romantasy') as romantasy,
   SUM(book.category = 'romance') as romance,
-  SUM(book.category = 'fantasia') as fantasia
+  SUM(book.category = 'fantasia') as fantasia,
+  SUM(book.category = 'ciencia ficcion') as cienciaficcion,
+  SUM(book.category = 'Zombies') as zombies,
+  SUM(book.category = 'novela histórica') as historica,
+  SUM(book.category = 'terror') as terror
   FROM book
   `;
   try {

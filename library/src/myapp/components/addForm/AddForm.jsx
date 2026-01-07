@@ -60,7 +60,6 @@ export const AddForm = ({ setform, author, /* genre */ }) => {
             <Form.Label>Título del libro <span className='text-danger'>*</span> </Form.Label>
             <Form.Control
               type="text"
-              placeholder="El Hobbit"
               className='custominput'
               required
               name='title'
@@ -69,24 +68,37 @@ export const AddForm = ({ setform, author, /* genre */ }) => {
             />
           </Form.Group>
 
-          <Form.Group className="mb-3">
-            <Form.Label>Saga</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Empíreo"
-              className='custominput'
-              name='series'
-              value={newBook.series}
-              onChange={handleBook}
-            />
-          </Form.Group>
+          <div className='d-flex justify-content-between gap-3'>
+            <Form.Group className="mb-3" style={{ width: '70%' }}>
+              <Form.Label>Saga</Form.Label>
+              <Form.Control
+                type="text"
+                className='custominput'
+                name='series'
+                value={newBook.series}
+                onChange={handleBook}
+              />
+            </Form.Group>
 
+            <Form.Group className="mb-3" style={{ width: '30%' }}>
+              <Form.Label>Rating <span className='text-danger'>*</span> </Form.Label>
+              <Form.Control
+                type="number"
+                className='custominput'
+                required
+                name='rating'
+                min={0}
+                max={5}
+                value={newBook.rating}
+                onChange={handleBook}
+              />
+            </Form.Group>
+          </div>
           <div className='d-flex justify-content-between gap-3'>
             <Form.Group className="mb-3" style={{ width: '30%' }}>
               <Form.Label>Orden en la saga</Form.Label>
               <Form.Control
                 type="number"
-                placeholder="0"
                 className='custominput'
                 name='seriesPosition'
                 value={newBook.seriesPosition}
@@ -98,7 +110,6 @@ export const AddForm = ({ setform, author, /* genre */ }) => {
               <Form.Label>Páginas <span className='text-danger'>*</span> </Form.Label>
               <Form.Control
                 type="number"
-                placeholder="0"
                 className='custominput'
                 required
                 name='pages'
@@ -117,14 +128,6 @@ export const AddForm = ({ setform, author, /* genre */ }) => {
                 value={newBook.category}
                 onChange={handleBook}
               />
-              {/*   {genre?.map((elem, idx) => {
-                  return (
-                    <option key={idx}
-                      value={elem.bookgenre}
-                    > {elem.bookgenre} </option>
-                  )
-                })}
-              </Form.Control> */}
             </Form.Group>
           </div>
 
