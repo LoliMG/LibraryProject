@@ -7,9 +7,6 @@ import { BrowserRouter, Routes, Route } from 'react-router';
 import { LateralBar } from './components/LateralBar/LateralBar';
 import { BooksPage } from './pages/booksPage/BooksPage';
 import { AllBooks } from './pages/allBooks/AllBooks';
-import { Reading } from './pages/reading/Reading';
-import { Completed } from './pages/completed/Completed';
-import { Pending } from './pages/pending/Pending';
 import { OneBook } from './pages/oneBook/OneBook';
 import { ErrorPage } from './pages/ErrorPage/ErrorPage';
 
@@ -71,7 +68,6 @@ export const Library = () => {
     fetchData();
   }, []);
 
-
   return (
     <BrowserRouter>
       <div className='common grid almendra-regular'>
@@ -79,18 +75,13 @@ export const Library = () => {
         <Routes>
           <Route
             path='/'
-            element={
-              <BooksPage
-                books={books}
-                status={status}
-                genre={genre}
-                author={author}
-              />}
-          >
-            <Route index element={<AllBooks books={books} />}></Route>
-            <Route path='reading' element={<Reading books={books} />}></Route>
-            <Route path='completed' element={<Completed books={books} />}></Route>
-            <Route path='pending' element={<Pending books={books} />}></Route>
+            element={<BooksPage
+              books={books}
+              status={status}
+              genre={genre}
+              author={author} />
+            }>
+            <Route index element={<AllBooks />}></Route>
           </Route>
 
           <Route path='/book/:id' element={<OneBook books={books} status={status} />}></Route>

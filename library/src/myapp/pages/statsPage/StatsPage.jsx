@@ -23,8 +23,7 @@ export const StatsPage = ({ status }) => {
             </p>
             <h3> {status.leyendo} </h3>
           </Col>
-        </Row>
-        <Row className='d-flex gap-4 pt-4'>
+
           <Col className='boxStat'>
             <p className='violetText'>
               Completados
@@ -75,7 +74,7 @@ export const StatsPage = ({ status }) => {
                 <p className='violetText'> {status.historica} libros </p>
               </div>
               <div className='d-flex justify-content-between '>
-                <p> <span className='numberCategory fs-4'>6.
+                <p> <span className='numberCategory fs-4'>7.
                 </span> Terror:</p>
                 <p className='violetText'> {status.terror} libros </p>
               </div>

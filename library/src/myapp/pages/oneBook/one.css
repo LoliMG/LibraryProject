@@ -2,13 +2,13 @@
   margin-left: 5rem;
   padding: 3rem;
   display: grid;
-  padding-top: 5rem;
+  padding-top: 4rem;
   grid-template-columns: 1fr 3fr;
   justify-content: center;
   gap: 3rem;
 
   img {
-    height: 82dvh;
+    height: 60dvh;
     border-radius: 1rem;
     box-shadow: 0 0 10px rgb(165, 142, 223);
   }
@@ -30,16 +30,14 @@
     min-height: 5rem;
     max-width: 70%;
   }
-
 }
 
 .miniPhotos {
-  padding: 5rem;
+  padding: 2rem;
   width: 90%;
 
-
   img {
-    height: 13rem;
+    height: 10rem;
     border-radius: 1rem;
 
     &:hover {

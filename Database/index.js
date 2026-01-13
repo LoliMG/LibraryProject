@@ -1,14 +1,9 @@
 import express from 'express';
 import connection from './config/db.js';
 import cors from 'cors';
-import bcrypt, { hash } from 'bcrypt';
-import jwt from 'jsonwebtoken';
 
 import {fileURLToPath} from 'url';
 import {dirname} from 'path';
-import { uploadImage } from './middleware/multer.js';
-import { log } from 'console';
-import { verify } from 'crypto';
 
 /* IMPORTS */
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -22,6 +17,7 @@ app.use(cors());
 //da permiso para recibir json de fuera
 app.use(express.json());
 
+/* Recuentos */
 app.get("/api/library/counts", async (req, res) => {
   let sql = `
   SELECT 
@@ -48,6 +44,7 @@ app.get("/api/library/counts", async (req, res) => {
   }
 });
 
+/* Datos de autores */
 app.get("/api/library/author", async (req, res) => {
   let sql = `
    SELECT MIN(author.author_id) AS author_id, author.name AS authorname
@@ -64,6 +61,7 @@ app.get("/api/library/author", async (req, res) => {
   }
 });
 
+/* Para select de género */
 app.get("/api/library/genre", async (req, res) => {
   let sql = `
   SELECT DISTINCT(book.category) AS bookgenre
@@ -79,6 +77,7 @@ app.get("/api/library/genre", async (req, res) => {
   }
 });
 
+/* Genérico */
 app.get("/api/library/alldata", async (req, res) => {
   let sql = `
   SELECT book.*

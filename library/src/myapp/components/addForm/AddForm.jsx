@@ -81,7 +81,7 @@ export const AddForm = ({ setform, author, /* genre */ }) => {
             </Form.Group>
 
             <Form.Group className="mb-3" style={{ width: '30%' }}>
-              <Form.Label>Rating <span className='text-danger'>*</span> </Form.Label>
+              <Form.Label>Rating </Form.Label>
               <Form.Control
                 type="number"
                 className='custominput'
@@ -174,7 +174,7 @@ export const AddForm = ({ setform, author, /* genre */ }) => {
 
           {/* IMAGE */}
           <Form.Group className="mb-3 cus">
-            <Form.Label >Añade el nombre de la imagen  <span className='text-danger'> * </span> </Form.Label>
+            <Form.Label >Nombre de la imagen  <span className='text-danger'> * </span> </Form.Label>
             <Form.Control
               type="text"
               className='custominput'

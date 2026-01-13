@@ -16,6 +16,20 @@
     }
   }
 
+  .buttonLilacInput {
+    padding-inline: 1.5rem;
+    color: white;
+    background-color: rgb(7, 13, 31);
+    border: 1px solid rgb(28, 28, 80);
+    border-radius: 0.5rem;
+    margin-right: 50px;
+
+    &:hover {
+      background-color: rgb(26, 26, 76);
+      transition: 1s;
+    }
+  }
+
   .filterBox {
     display: flex;
     gap: 2rem;
@@ -46,32 +60,6 @@
       color: rgb(80, 92, 197);
     }
 
-    .filters {
-      background-color: rgb(2, 6, 23);
-      color: rgb(80, 92, 197);
-      padding: 1rem;
-      border-radius: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-
-      .oneFilter {
-        padding: 0.3rem;
-        padding-inline: 1rem;
-        text-decoration: none;
-        color: rgb(139, 151, 251);
-      }
-
-      .selected {
-        color: rgb(251, 216, 127);
-        text-decoration: none;
-        padding: 0.3rem;
-        padding-inline: 1rem;
-        background-color: rgb(26, 26, 76);
-        border-radius: 1rem;
-      }
-    }
-
     .edited-select {
       background-color: rgb(7, 13, 31);
       color: rgb(139, 151, 251);
@@ -98,6 +86,32 @@
 
   }
 
+  .filters {
+    background-color: rgb(2, 6, 23);
+    color: rgb(80, 92, 197);
+    padding: 1rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .oneFilter {
+      padding: 0.3rem;
+      padding-inline: 1rem;
+      text-decoration: none;
+      color: rgb(139, 151, 251);
+    }
+
+    .selected {
+      color: rgb(251, 216, 127);
+      text-decoration: none;
+      padding: 0.3rem;
+      padding-inline: 1rem;
+      background-color: rgb(26, 26, 76);
+      border-radius: 1rem;
+    }
+  }
+
   .container-card {
     display: flex;
     flex-direction: row;
@@ -105,4 +119,10 @@
     flex-wrap: wrap;
     justify-content: center;
   }
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
 }
