@@ -1,6 +1,9 @@
 import express from 'express';
 import connection from './config/db.js';
 import cors from 'cors';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 import {fileURLToPath} from 'url';
 import {dirname} from 'path';
@@ -8,7 +11,7 @@ import {dirname} from 'path';
 /* IMPORTS */
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const port = 4000;
+const port = process.env.DB_PORT;
 const app = express();
 
 //Middleware para permitir cors
