@@ -9,7 +9,7 @@ export const LateralBar = () => {
     <div className='lateralbar'>
       <div className='text-center'>
         <img src={icon} style={{ height: '10rem' }} />
-
+        
         <h2 className='title almendra-bold'>Bookfly</h2>
       </div>
       <div className='d-flex flex-column gap-3 pt-5'>
