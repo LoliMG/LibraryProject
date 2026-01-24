@@ -1,14 +1,18 @@
-import { Link, useParams } from 'react-router';
 import './one.css';
-import React from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Link, useParams, } from 'react-router';
+import { useState } from 'react';
+import { Col, Row, Button } from 'react-bootstrap';
+import { EditForm } from '../../components/editForm/EditForm.jsx';
 
-export const OneBook = ({ books,/*  status  */ }) => {
+export const OneBook = ({ books, author, newBook }) => {
+  const [editForm, setEditForm] = useState(false);
   const { id } = useParams();
   const thisID = Number(id);
   const maxRecommendBooks = 6;
 
   const book = books.find(e => e.book_id === thisID);
+
+  const authorData = author ? author.find(a => a.author_id === book.author_id) : null;
 
   if (!book) {
     return <div className='loading'>Cargando o libro no encontrado.</div>;
@@ -20,8 +24,22 @@ export const OneBook = ({ books,/*  status  */ }) => {
     .sort(() => Math.random() - 0.5)
     .slice(0, maxRecommendBooks);
 
+  // Sort books by book_id for navigation
+  const sortedBooks = [...books].sort((a, b) => a.book_id - b.book_id);
+  const currentIndex = sortedBooks.findIndex(e => e.book_id === thisID);
+  const prevBook = sortedBooks[currentIndex > 0 ? currentIndex - 1 : sortedBooks.length - 1];
+  const nextBook = sortedBooks[currentIndex < sortedBooks.length - 1 ? currentIndex + 1 : 0];
+
   return (
     <div>
+      <div>
+        {editForm == true ? <EditForm
+          setEditForm={setEditForm}
+          newBook={newBook}
+          author={author}
+          book={book}
+        /> : ""}
+      </div>
       <div className='gridOneBook'>
         <div>
           <img src={`/public/images/books/${book.img}`} alt="" />
@@ -40,9 +58,15 @@ export const OneBook = ({ books,/*  status  */ }) => {
           `}
             > {book.status}
             </h6>
-          </div>
 
-          <h5>{book.pages} páginas</h5>
+          </div>
+          <Link
+            to={`/OneAuthor/${authorData.author_id}`}
+            state={{ fromBook: book.book_id }}
+            style={{ textDecoration: 'none' }}          >
+            <h5 className='linkAuthor title'> {authorData?.authorname}</h5>
+          </Link>
+          <h6>{book.pages} páginas</h6>
 
           {book.rating != undefined ?
             <div>
@@ -56,8 +80,12 @@ export const OneBook = ({ books,/*  status  */ }) => {
               <p className='commentBox'> {book.comment}  </p>
             </div>
             : ""}
-        </div>
 
+          <Button className='buttonOrange'
+            onClick={() => setEditForm(true)}
+          >Editar libro
+          </Button>
+        </div>
       </div>
 
       <div className='text-center'>
@@ -67,11 +95,11 @@ export const OneBook = ({ books,/*  status  */ }) => {
           >Volver
           </Link>
           <Link className='buttonLilac'
-            to={`/book/${thisID === 1 ? books.length : thisID - 1}`}
+            to={`/book/${prevBook.book_id}`}
           >Anterior
           </Link>
           <Link className='buttonLilac'
-            to={`/book/${thisID == books.length ? 1 : thisID + 1}`}
+            to={`/book/${nextBook.book_id}`}
           >Siguiente
           </Link>
         </div>

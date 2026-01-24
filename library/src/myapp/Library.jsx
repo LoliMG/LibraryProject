@@ -3,18 +3,34 @@ import './style.css';
 import axios from 'axios';
 import { StatsPage } from './pages/statsPage/StatsPage';
 import { BrowserRouter, Routes, Route } from 'react-router';
-
 import { LateralBar } from './components/LateralBar/LateralBar';
 import { BooksPage } from './pages/booksPage/BooksPage';
 import { AllBooks } from './pages/allBooks/AllBooks';
 import { OneBook } from './pages/oneBook/OneBook';
 import { ErrorPage } from './pages/ErrorPage/ErrorPage';
+import { OneAuthor } from './pages/oneAuthor/OneAuthor';
+
+
+const initialValue = {
+  img: "",
+  title: "",
+  pages: null,
+  rating: null,
+  category: "",
+  status: "",
+  series: "",
+  seriesPosition: null,
+  comment: "",
+  author_id: ""
+}
+
 
 export const Library = () => {
   const [books, setBooks] = useState([]);
   const [status, setStatus] = useState([]);
   const [author, setAuthor] = useState([]);
   const [genre, setGenre] = useState([]);
+  const [newBook, setNewBook] = useState(initialValue);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -79,12 +95,21 @@ export const Library = () => {
               books={books}
               status={status}
               genre={genre}
-              author={author} />
+              author={author}
+              newBook={newBook}
+              setNewBook={setNewBook}
+            />
             }>
             <Route index element={<AllBooks />}></Route>
           </Route>
 
-          <Route path='/book/:id' element={<OneBook books={books} status={status} />}></Route>
+          <Route path='/book/:id' element={
+            <OneBook
+              books={books}
+              author={author}
+              newBook={newBook}
+              setNewBook={setNewBook}
+            />}></Route>
           <Route
             path='/stats'
             element={
@@ -94,6 +119,11 @@ export const Library = () => {
                 author={author}
               />} />
           <Route path="*" element={<ErrorPage />} />
+
+          <Route path='/oneAuthor/:id' element={<OneAuthor
+            books={books}
+            author={author}
+          />} />
         </Routes>
       </div>
     </BrowserRouter>

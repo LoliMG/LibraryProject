@@ -1,6 +1,7 @@
 .bookcard {
   background-color: rgb(9, 15, 32);
   color: white;
+  height: 40rem;
   border: 1px solid rgb(27, 32, 74);
 
   &:hover {

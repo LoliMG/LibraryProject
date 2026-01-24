@@ -30,6 +30,22 @@
     min-height: 5rem;
     max-width: 70%;
   }
+
+  .buttonOrange {
+    color: white;
+    padding-inline: 1.5rem;
+    background-color: rgb(217, 119, 6);
+    border: 1px solid rgb(194, 125, 13);
+    border-radius: 0.5rem;
+    margin-right: 50px;
+    text-decoration: none;
+    padding: 0.5rem;
+
+    &:hover {
+      background-color: rgb(141, 66, 8);
+      transition: 0.5s;
+    }
+  }
 }
 
 .miniPhotos {
@@ -99,4 +115,17 @@
   color: rgb(163, 177, 247);
   border: 1px solid rgb(91, 98, 145);
   border-radius: 0.5rem;
+}
+
+
+.linkAuthor {
+  width: fit-content;
+  padding: 0.3rem;
+  padding-inline: 0.5rem;
+  background-color: rgba(91, 98, 145, 0.504);
+  border-radius: 1rem;
+
+  &:hover {
+    background-color: rgb(91, 98, 145);
+  }
 }

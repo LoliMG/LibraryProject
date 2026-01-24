@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import './BP.css';
 import { InputGroup, Form, Dropdown } from 'react-bootstrap';
-import { AddForm } from '../../components/addForm/AddForm.jsx';
-import { AllBooks } from '../allBooks/AllBooks.jsx';
+import { AddForm } from '../../components/addForm/AddForm';
+import { AllBooks } from '../allBooks/AllBooks';
 
-export const BooksPage = ({ status, author, genre, books }) => {
+export const BooksPage = ({ status, author, genre, books, newBook }) => {
   const [form, setForm] = useState(false);
   /* filter by status */
   const [filter, setFilter] = useState('todos');
@@ -87,6 +87,8 @@ export const BooksPage = ({ status, author, genre, books }) => {
         genre={genre}
         status={status}
         author={author}
+        books={books}
+        newBook={newBook}
       /> : ""}
 
       <div className="d-flex justify-content-between">

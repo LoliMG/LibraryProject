@@ -1,20 +1,24 @@
 import Button from 'react-bootstrap/Button';
-import './add.css';
+import './edit.css';
 import { Card, Form } from 'react-bootstrap';
-import axios from 'axios'
+import { useState } from 'react';
+import axios from 'axios';
 
-export const AddForm = ({ setform, author, newBook, setNewBook }) => {
+
+export const EditForm = ({ setform, author, book, setEditForm }) => {
+  const [editBook, setEditBook] = useState(book);
+
   const handleBook = (e) => {
     const { name, value } = e.target;
-    setNewBook({ ...newBook, [name]: value });
+    setEditBook(prev => ({ ...prev, [name]: value }));
   }
 
   const submit = async () => {
     try {
-      const res = await axios.post('http://localhost:4000/api/addBook', newBook);
+      const res = await axios.post('http://localhost:4000/api/editBook', editBook);
       console.log(res);
-
-      setform(false);
+      window.location.reload();
+      setEditForm(false);
     }
     catch (error) {
       console.log(error);
@@ -32,7 +36,9 @@ export const AddForm = ({ setform, author, newBook, setNewBook }) => {
       /* anula el onClick de arriba */
       >
         <Card.Header closeButton>
-          <Card.Title className='title pb-2'> <h2> Añadir nuevo libro</h2></Card.Title>
+          <Card.Title className='title pb-2'>
+            <h2> Editar libro</h2>
+          </Card.Title>
           <Card.Subtitle className='violetText'>
             <span className='text-danger'> * </span>  Información obligatoria.
           </Card.Subtitle>
@@ -47,7 +53,7 @@ export const AddForm = ({ setform, author, newBook, setNewBook }) => {
               className='custominput'
               required
               name='title'
-              value={newBook.title}
+              value={editBook.title}
               onChange={handleBook}
             />
           </Form.Group>
@@ -59,7 +65,7 @@ export const AddForm = ({ setform, author, newBook, setNewBook }) => {
                 type="text"
                 className='custominput'
                 name='series'
-                value={newBook.series}
+                value={editBook.series}
                 onChange={handleBook}
               />
             </Form.Group>
@@ -73,7 +79,7 @@ export const AddForm = ({ setform, author, newBook, setNewBook }) => {
                 name='rating'
                 min={0}
                 max={5}
-                value={newBook.rating}
+                value={editBook.rating}
                 onChange={handleBook}
               />
             </Form.Group>
@@ -85,7 +91,7 @@ export const AddForm = ({ setform, author, newBook, setNewBook }) => {
                 type="number"
                 className='custominput'
                 name='seriesPosition'
-                value={newBook.seriesPosition}
+                value={editBook.seriesPosition}
                 onChange={handleBook}
               />
             </Form.Group>
@@ -97,7 +103,7 @@ export const AddForm = ({ setform, author, newBook, setNewBook }) => {
                 className='custominput'
                 required
                 name='pages'
-                value={newBook.pages}
+                value={editBook.pages}
                 onChange={handleBook}
               />
             </Form.Group>
@@ -109,7 +115,7 @@ export const AddForm = ({ setform, author, newBook, setNewBook }) => {
                 className='custominput'
                 required
                 name='category'
-                value={newBook.category}
+                value={editBook.category}
                 onChange={handleBook}
               />
             </Form.Group>
@@ -123,7 +129,7 @@ export const AddForm = ({ setform, author, newBook, setNewBook }) => {
                 className='custominput'
                 required
                 name='status'
-                value={newBook.status}
+                value={editBook.status}
                 onChange={handleBook}
               >
                 <option value="leyendo">Leyendo</option>
@@ -140,7 +146,7 @@ export const AddForm = ({ setform, author, newBook, setNewBook }) => {
                 className='custominput'
                 required
                 name='author_id'
-                value={newBook.author_id}
+                value={editBook.author_id}
                 onChange={handleBook}
               >
                 {author?.map((elem, idx) => {
@@ -163,7 +169,7 @@ export const AddForm = ({ setform, author, newBook, setNewBook }) => {
               type="text"
               className='custominput'
               name='img'
-              value={newBook.img}
+              value={editBook.img}
               onChange={handleBook}
             />
           </Form.Group>
@@ -177,7 +183,7 @@ export const AddForm = ({ setform, author, newBook, setNewBook }) => {
                 placeholder='Comentario sobre el libro.'
                 className='custominput'
                 name='comment'
-                value={newBook.comment}
+                value={editBook.comment}
                 onChange={handleBook}
               />
             </Form.Group>
@@ -188,12 +194,12 @@ export const AddForm = ({ setform, author, newBook, setNewBook }) => {
 
         <Card.Footer className='d-flex gap-3'>
           <Button variant="secondary"
-            onClick={() => setform(false)}
+            onClick={() => setEditForm(false)}
           >Cancelar</Button>
           <button
             className='buttonOrange'
             onClick={submit}
-          >Añadir libro
+          >Editar libro
           </button>
         </Card.Footer>
       </Card>
