@@ -4,7 +4,7 @@ import { InputGroup, Form, Dropdown } from 'react-bootstrap';
 import { AddForm } from '../../components/addForm/AddForm';
 import { AllBooks } from '../allBooks/AllBooks';
 
-export const BooksPage = ({ status, author, genre, books, newBook }) => {
+export const BooksPage = ({ status, author, genre, books, newBook, setNewBook }) => {
   const [form, setForm] = useState(false);
   /* filter by status */
   const [filter, setFilter] = useState('todos');
@@ -89,6 +89,7 @@ export const BooksPage = ({ status, author, genre, books, newBook }) => {
         author={author}
         books={books}
         newBook={newBook}
+        setNewBook={setNewBook}
       /> : ""}
 
       <div className="d-flex justify-content-between">
