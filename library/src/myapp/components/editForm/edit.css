@@ -1,7 +1,7 @@
 .addFormBG {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: var(--underFormBGs);
   z-index: 1050;
   display: flex;
   justify-content: flex-end;
@@ -14,44 +14,30 @@
   width: 50%;
   max-width: 40rem;
   height: 100%;
-  background: rgb(15, 23, 42);
+  background: var(--formBG);
   margin: 0;
   display: flex;
   justify-self: right;
-  border: 1px solid rgb(40, 47, 102);
-
-  .buttonOrange {
-    color: white;
-    padding-inline: 1.5rem;
-    background-color: rgb(217, 119, 6);
-    border: 1px solid rgb(194, 125, 13);
-    border-radius: 0.5rem;
-    margin-right: 50px;
-
-    &:hover {
-      background-color: rgb(141, 66, 8);
-      transition: 0.5s;
-    }
-  }
+  border: var(--darkBorder);
 
   .custominput {
-    background-color: rgb(8, 14, 33);
-    color: rgb(89, 80, 182);
-    border: 1px solid rgb(29, 30, 81);
+    background-color: var(--darkPurple2);
+    color: var(--inputPurple);
+    border: var(--darkBorder);
   }
 
   .custominput::placeholder {
-    color: rgb(89, 80, 182);
+    color: var(--inputPurple);
   }
 
   .custominput[type="file"]::file-selector-button {
-    background-color: rgb(18, 23, 49);
+    background-color: var(--darkPurple);
     color: white;
   }
 
   .commentBox {
-    background-color: rgb(18, 23, 49);
-    border: 1px solid rgb(35, 39, 87);
+    background-color: var(--darkPurple);
+    border: var(--darkBorder);
     border-radius: 1rem;
     padding: 1rem;
   }

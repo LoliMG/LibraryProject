@@ -3,3 +3,76 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+/* FONT */
+.almendra-regular {
+  font-family: "Almendra", serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.almendra-bold {
+  font-family: "Almendra", serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+/* COMMON REUSABLE STYLE */
+.common {
+  background-color: rgb(2, 6, 23);
+  color: white;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: 15rem 4fr;
+}
+
+.title {
+  color: rgb(254, 243, 199);
+}
+
+.violetText {
+  color: rgb(158, 172, 241);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 17rem 4fr;
+}
+
+
+/* BUTTONS */
+.buttonLilac {
+  text-decoration: none;
+  color: white;
+  padding: 0.5rem;
+  padding-inline: 1.5rem;
+  background-color: rgb(35, 39, 87);
+  border: 1px solid rgb(150, 128, 205);
+  border-radius: 0.5rem;
+  margin-right: 50px;
+
+  &:hover {
+    background-color: var(--darkPurple);
+    transition: 0.5s;
+  }
+}
+
+.buttonOrange {
+  color: white;
+  padding-inline: 1.5rem;
+  background-color: rgb(217, 119, 6);
+  border: 1px solid rgb(194, 125, 13);
+  border-radius: 1rem;
+  margin-right: 50px;
+
+  &:hover {
+    background-color: rgb(141, 66, 8);
+    transition: 0.5s;
+  }
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+}

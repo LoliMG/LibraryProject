@@ -5,7 +5,7 @@ import { useState } from 'react';
 import axios from 'axios';
 
 
-export const EditForm = ({ setform, author, book, setEditForm }) => {
+export const EditForm = ({ author, book, setEditForm }) => {
   const [editBook, setEditBook] = useState(book);
 
   const handleBook = (e) => {
@@ -28,7 +28,7 @@ export const EditForm = ({ setform, author, book, setEditForm }) => {
   return (
     <div
       className="modal show addFormBG"
-      onClick={() => setform(false)}
+      onClick={() => setEditForm(false)}
     >
       <Card
         className='addForm'

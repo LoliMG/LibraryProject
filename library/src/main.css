@@ -1,0 +1,10 @@
+:root {
+  --formBGsUnder: rgba(0, 0, 0, 0.45);  
+  --formBG: rgb(15, 23, 42);
+  --darkPurple: rgb(18, 23, 49);
+  --darkPurple2: rgb(8, 14, 33);
+  --inputPurple: rgb(89, 80, 182);
+  --lightPurple: rgb(139, 151, 251);
+  --darkBorder: 1px solid rgb(36, 37, 99);
+  --golden: rgb(244, 198, 79);
+}

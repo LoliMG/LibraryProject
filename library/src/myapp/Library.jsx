@@ -1,5 +1,5 @@
-import React, { useEffect, useState, } from 'react';
-import './style.css';
+import { useEffect, useState, } from 'react';
+import '../App.css'
 import axios from 'axios';
 import { StatsPage } from './pages/statsPage/StatsPage';
 import { BrowserRouter, Routes, Route } from 'react-router';
@@ -9,7 +9,6 @@ import { AllBooks } from './pages/allBooks/AllBooks';
 import { OneBook } from './pages/oneBook/OneBook';
 import { ErrorPage } from './pages/ErrorPage/ErrorPage';
 import { OneAuthor } from './pages/oneAuthor/OneAuthor';
-
 
 const initialValue = {
   img: "",
@@ -23,7 +22,6 @@ const initialValue = {
   comment: "",
   author_id: ""
 }
-
 
 export const Library = () => {
   const [books, setBooks] = useState([]);

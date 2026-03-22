@@ -2,25 +2,11 @@
   padding: 3rem;
   font-size: large;
 
-  .buttonOrange {
-    color: white;
-    padding-inline: 1.5rem;
-    background-color: rgb(217, 119, 6);
-    border: 1px solid rgb(194, 125, 13);
-    border-radius: 1rem;
-    margin-right: 50px;
-
-    &:hover {
-      background-color: rgb(141, 66, 8);
-      transition: 0.5s;
-    }
-  }
-
   .buttonLilacInput {
     padding-inline: 1.5rem;
     color: white;
-    background-color: rgb(7, 13, 31);
-    border: 1px solid rgb(28, 28, 80);
+    background-color: var(--darkPurple2);
+    border: var(--darkBorder);
     border-radius: 0.5rem;
     margin-right: 50px;
 
@@ -36,47 +22,47 @@
     margin-top: 3rem;
     height: 7rem;
     padding: 2rem;
-    background-color: rgb(12, 19, 39);
+    background-color: var(--darkPurple);
     border-radius: 1.5rem;
-    border: 1px solid rgb(30, 35, 79);
+    border: var(--darkBorder);
     width: 95%;
 
     .input {
-      background-color: rgb(7, 13, 31);
-      border: 1px solid rgb(28, 28, 80);
+      background-color: var(--darkPurple2);
+      border: var(--darkBorder);
       border-radius: 0.5rem;
       width: 5rem;
       padding: 0.5rem;
-      color: rgb(80, 92, 197);
+      color: var(--inputPurple);
     }
 
     .form-control::placeholder {
-      color: rgb(66, 78, 184);
+      color: var(--inputPurple);
     }
 
     .inputText {
-      background-color: rgb(7, 13, 31);
-      border: 1px solid rgb(28, 28, 80);
-      color: rgb(80, 92, 197);
+      background-color: var(--darkPurple2);
+      border: var(--darkBorder);
+      color: var(--inputPurple);
     }
 
     .edited-select {
-      background-color: rgb(7, 13, 31);
-      color: rgb(139, 151, 251);
+      background-color: var(--darkPurple2);
+      color: var(--lightPurple);
       padding: 0.5rem;
       padding-inline: 1rem;
-      border: 1px solid rgb(28, 28, 80);
+      border: var(--darkBorder);
       border-radius: 1rem;
     }
 
     .edited-menu {
-      background-color: rgb(7, 13, 31);
-      color: rgb(139, 151, 251);
+      background-color: var(--darkPurple2);
+      color: var(--lightPurple);
       padding: 0.5rem;
     }
 
     .edited-option {
-      color: rgb(222, 209, 255);
+      color: var(--lightPurple);
 
       &:hover {
         background-color: rgb(28, 28, 80);
@@ -88,7 +74,7 @@
 
   .filters {
     background-color: rgb(2, 6, 23);
-    color: rgb(80, 92, 197);
+    color: var(--lightPurple);
     padding: 1rem;
     border-radius: 1rem;
     display: flex;
@@ -119,10 +105,4 @@
     flex-wrap: wrap;
     justify-content: center;
   }
-}
-
-button {
-  background: none;
-  border: none;
-  padding: 0;
 }

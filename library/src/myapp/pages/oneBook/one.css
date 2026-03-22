@@ -10,41 +10,25 @@
   img {
     height: 60dvh;
     border-radius: 1rem;
-    box-shadow: 0 0 10px rgb(165, 142, 223);
+    box-shadow: 0 0 10px var(--lightPurple);
   }
 
   .genre {
-    background-color: rgb(18, 20, 52);
+    background-color: var(--formBG);
     padding: 0.2rem;
     padding-inline: 0.5rem;
     width: fit-content;
     border-radius: 0.5rem;
-    border: 1px solid rgb(34, 36, 89);
+    border: var(--darkBorder);
   }
 
   .commentBox {
-    background-color: rgb(18, 23, 49);
-    border: 1px solid rgb(35, 39, 87);
+    background-color: var(--darkPurple);
+    border: var(--darkBorder);
     border-radius: 1rem;
     padding: 1rem;
     min-height: 5rem;
     max-width: 70%;
-  }
-
-  .buttonOrange {
-    color: white;
-    padding-inline: 1.5rem;
-    background-color: rgb(217, 119, 6);
-    border: 1px solid rgb(194, 125, 13);
-    border-radius: 0.5rem;
-    margin-right: 50px;
-    text-decoration: none;
-    padding: 0.5rem;
-
-    &:hover {
-      background-color: rgb(141, 66, 8);
-      transition: 0.5s;
-    }
   }
 }
 
@@ -62,22 +46,6 @@
       transform: translateY(-5px);
       transition-duration: 0.8s;
     }
-  }
-}
-
-.buttonLilac {
-  text-decoration: none;
-  color: white;
-  padding: 0.5rem;
-  padding-inline: 1.5rem;
-  background-color: rgb(35, 39, 87);
-  border: 1px solid rgb(150, 128, 205);
-  border-radius: 0.5rem;
-  margin-right: 50px;
-
-  &:hover {
-    background-color: rgb(18, 23, 49);
-    transition: 0.5s;
   }
 }
 
@@ -117,13 +85,13 @@
   border-radius: 0.5rem;
 }
 
-
 .linkAuthor {
   width: fit-content;
   padding: 0.3rem;
   padding-inline: 0.5rem;
   background-color: rgba(91, 98, 145, 0.504);
   border-radius: 1rem;
+  border: 1px solid rgba(255, 225, 0, 0.493);
 
   &:hover {
     background-color: rgb(91, 98, 145);

@@ -1,17 +1,19 @@
 .lateralbar {
-  background-color: rgb(14, 22, 41);
-  border: 1px solid rgb(32, 34, 86);
+  background-color: var(--darkPurple);
+  border: var(--darkBorder);
   min-height: 100dvh;
   padding: 2rem;
   font-size: large; 
 
   .link {
     text-decoration: none;
+    border-radius: 1rem;
+     background-color: var(--darkPurple2);
+    border: var(--darkBorder);
     padding: 0.7rem;
 
     &:hover {
-      background-color: rgb(32, 34, 86);
-      border-radius: 1rem;
+      background-color: rgb(32, 34, 86);   
     }
   }
 }

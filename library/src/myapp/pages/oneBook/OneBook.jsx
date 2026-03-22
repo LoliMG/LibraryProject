@@ -44,9 +44,9 @@ export const OneBook = ({ books, author, newBook }) => {
         <div>
           <img src={`/public/images/books/${book.img}`} alt="" />
         </div>
-        <div className='px-2'>
+        <div className='px-2 position-relative'>
           <h1 className='title fs-1 pt-2'> {book.title} </h1>
-          <h4>  {book.series != "" ? `${book.series}, libro ${book.seriesPosition}` : ""} </h4>
+          <h4>{book.series != "" ? `Saga ${book.series}, libro ${book.seriesPosition}` : ""} </h4>
           <h4 className='violetText'> {book.name} </h4>
 
           <div className='d-flex flex-row gap-2'>
@@ -81,7 +81,7 @@ export const OneBook = ({ books, author, newBook }) => {
             </div>
             : ""}
 
-          <Button className='buttonOrange'
+          <Button className='buttonOrange position-absolute bottom-0'
             onClick={() => setEditForm(true)}
           >Editar libro
           </Button>

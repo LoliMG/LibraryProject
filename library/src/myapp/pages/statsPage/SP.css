@@ -1,25 +1,25 @@
 .statspage {
-  padding: 3rem;
+  padding: 4rem;
   font-size: large;
-}
 
-.boxStat {
-  background-color: rgb(9, 15, 32);
-  border: 1px solid rgb(22, 24, 62);
-  border-radius: 1rem;
-  padding: 1.5rem;
-  max-width: 20rem;
-}
+  .boxStat {
+    background-color: rgb(9, 15, 32);
+    border: 1px solid rgb(22, 24, 62);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    max-width: 20rem;
+  }
 
-.boxStat2 {
-  background-color: rgb(9, 15, 32);
-  border: 1px solid rgb(22, 24, 62);
-  border-radius: 1rem;
-  padding: 2rem;
-  max-width: 84.5rem;
-}
+  .boxStat2 {
+    background-color: rgb(9, 15, 32);
+    border: 1px solid rgb(22, 24, 62);
+    border-radius: 1rem;
+    padding: 2rem;
+    max-width: 84.5rem;
+  }
 
-.numberCategory {
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  color: goldenrod;
+  .numberCategory {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: goldenrod;
+  }
 }

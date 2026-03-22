@@ -1,17 +1,17 @@
 .bookcard {
-  background-color: rgb(9, 15, 32);
+  background-color: var(--darkPurple2);
   color: white;
   height: 40rem;
-  border: 1px solid rgb(27, 32, 74);
+  border: var(--darkBorder);
 
   &:hover {
     box-shadow: 0 5px 20px rgba(69, 80, 180, 0.586);
-    border: 1px solid rgb(114, 85, 11);
+    border: 1px solid var(--golden);
     transform: translateY(-5px);
     transition-duration: 0.8s;
 
     .cardtitle {
-      color: rgb(244, 198, 79);
+      color: var(--golden);
     }
   }
 
@@ -59,10 +59,10 @@
 }
 
 .category {
-  background-color: rgb(18, 20, 52);
+  background-color: var(--darkPurple);
   padding: 0.2rem;
   padding-inline: 0.5rem;
   width: fit-content;
   border-radius: 0.5rem;
-  border: 1px solid rgb(34, 36, 89);
+  border: var(--darkBorder);
 }
