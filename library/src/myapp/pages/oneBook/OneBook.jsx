@@ -70,7 +70,6 @@ export const OneBook = ({ books, author, newBook }) => {
 
           {book.rating != undefined ?
             <div>
-              <p className='violetText'> Puntuación: </p>
               <p>{stars} <span className='text-warning fs-5 px-2'> {stars.length} / 5 </span> </p>
             </div> : ""}
 
@@ -88,7 +87,7 @@ export const OneBook = ({ books, author, newBook }) => {
         </div>
       </div>
 
-      <div className='text-center'>
+      <div className='text-center pt-4'>
         <div>
           <Link className='buttonLilac'
             to={`/`}

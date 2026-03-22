@@ -1,0 +1,82 @@
+.authors {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .authorBox {
+    background-color: var(--darkPurple);
+    border: var(--darkBorder);
+    border-radius: 1rem;
+    padding: 2rem;
+
+    .buttonLilacInput {
+      padding-inline: 1.5rem;
+      color: white;
+      background-color: var(--darkPurple2);
+      border: var(--darkBorder);
+      border-radius: 0.5rem;
+      margin-right: 50px;
+
+      &:hover {
+        background-color: var(--darkPurple3);
+        transition: 1s;
+      }
+    }
+
+    .input {
+      background-color: var(--darkPurple2);
+      border: var(--darkBorder);
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+      color: var(--inputPurple);
+    }
+
+    .form-control::placeholder {
+      color: var(--inputPurple);
+    }
+
+    .inputText {
+      background-color: var(--darkPurple2);
+      border: var(--darkBorder);
+      color: var(--inputPurple);
+    }
+  }
+
+
+  .authorsAccordion {
+    .bookDisplay {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .accordion-item {
+      border: none;
+    }
+
+    .accordion-button {
+      background-color: var(--darkPurple);
+      border: var(--darkBorder);
+      color: var(--lightPurple);
+
+      &:hover {
+        background-color: var(--darkPurple3);
+        color: var(--golden);
+      }
+
+      &:not(.collapsed) {
+        background-color: var(--inputPurple);
+        color: var(--golden);
+      }
+
+      &::after {
+        filter: invert(1);
+      }
+    }
+
+
+    .accordion-body {
+      background-color: var(--darkPurple3);
+    }
+  }
+
+}

@@ -1,0 +1,9 @@
+.quotes {
+
+  .quoteBox {
+    background-color: var(--darkPurple);
+    border: var(--darkBorder);
+    border-radius: 1rem;
+    padding: 2rem;
+  }
+}

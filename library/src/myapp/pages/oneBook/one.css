@@ -1,6 +1,5 @@
 .gridOneBook {
   margin-left: 5rem;
-  padding: 3rem;
   display: grid;
   padding-top: 4rem;
   grid-template-columns: 1fr 3fr;
@@ -47,42 +46,6 @@
       transition-duration: 0.8s;
     }
   }
-}
-
-.onRead {
-  width: fit-content;
-  align-content: center;
-  padding: 0.2rem;
-  padding-inline: 0.5rem;
-  max-height: 2rem;
-  background-color: rgb(89, 71, 51);
-  color: rgb(216, 180, 70);
-  border: 1px solid rgb(216, 180, 70);
-  border-radius: 0.5rem;
-}
-
-.completed {
-  width: fit-content;
-  align-content: center;
-  padding: 0.2rem;
-  padding-inline: 0.5rem;
-  max-height: 2rem;
-  background-color: rgb(46, 48, 42);
-  color: rgb(125, 221, 179);
-  border: 1px solid rgb(77, 114, 93);
-  border-radius: 0.5rem;
-}
-
-.pending {
-  width: fit-content;
-  align-content: center;
-  padding: 0.2rem;
-  padding-inline: 0.5rem;
-  max-height: 2rem;
-  background-color: rgb(39, 46, 58);
-  color: rgb(163, 177, 247);
-  border: 1px solid rgb(91, 98, 145);
-  border-radius: 0.5rem;
 }
 
 .linkAuthor {

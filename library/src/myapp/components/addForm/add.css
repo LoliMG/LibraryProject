@@ -1,11 +1,11 @@
 .addFormBG {
   position: fixed;
   inset: 0;
-  background: var(--formBGs);
+  background: var(--formBGsUnder) !important;
   z-index: 1050;
   display: flex;
   justify-content: flex-end;
-  align-items: stretch;
+  align-items: stretch;  
 
   .addForm {
     color: white;

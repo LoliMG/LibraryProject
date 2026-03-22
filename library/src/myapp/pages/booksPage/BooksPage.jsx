@@ -56,7 +56,8 @@ export const BooksPage = ({ status, author, genre, books, newBook, setNewBook })
       setSearch("");
     }
     else {
-      setFilteredBooks(books.filter((e) => e.title.toLowerCase().includes(search.toLowerCase())));
+      setFilteredBooks(books.filter((e) => e.title.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+        .includes(search.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))));
       setSearch("");
     }
   }
@@ -109,7 +110,7 @@ export const BooksPage = ({ status, author, genre, books, newBook, setNewBook })
       </p>
 
       <section className='filterBox'>
-        <InputGroup className="mb-3">
+        <InputGroup>
           <InputGroup.Text
             className='inputText fs-5'
           > ◯
@@ -120,6 +121,11 @@ export const BooksPage = ({ status, author, genre, books, newBook, setNewBook })
             className='input'
             value={search}
             onChange={(e) => setSearch(e.target.value)} /* seteo en línea */
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                submit();
+              }
+            }}
           />
           <button
             className='buttonLilacInput'
@@ -128,53 +134,55 @@ export const BooksPage = ({ status, author, genre, books, newBook, setNewBook })
           </button>
         </InputGroup>
 
-        <div className='filters'>
-          <button
-            onClick={() => changeFilter('all')}
-            className={filter === 'todos' ? 'selected' : 'oneFilter'}
-          >Todos
-          </button>
-          <button
-            onClick={() => changeFilter('reading')}
-            className={filter === 'leyendo' ? 'selected' : 'oneFilter'}
-          >Leyendo
-          </button>
-          <button
-            onClick={() => changeFilter('completed')}
-            className={filter === 'completado' ? 'selected' : 'oneFilter'}
-          >Completados
-          </button>
-          <button
-            onClick={() => changeFilter('pending')}
-            className={filter === 'pendiente' ? 'selected' : 'oneFilter'}
-          >Pendientes
-          </button>
+        <div className='categoryBox'>
+          <div className='filters'>
+            <button
+              onClick={() => changeFilter('all')}
+              className={filter === 'todos' ? 'selected' : 'oneFilter'}
+            >Todos
+            </button>
+            <button
+              onClick={() => changeFilter('reading')}
+              className={filter === 'leyendo' ? 'selected' : 'oneFilter'}
+            >Leyendo
+            </button>
+            <button
+              onClick={() => changeFilter('completed')}
+              className={filter === 'completado' ? 'selected' : 'oneFilter'}
+            >Completados
+            </button>
+            <button
+              onClick={() => changeFilter('pending')}
+              className={filter === 'pendiente' ? 'selected' : 'oneFilter'}
+            >Pendientes
+            </button>
+          </div>
+
+          <Dropdown className='drop'>
+            <Dropdown.Toggle
+              className="edited-select">
+              Elige opción
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu className="edited-menu">
+              <Dropdown.Item
+                className='edited-option'
+                onClick={orderAlf}
+              >Orden alfabético
+              </Dropdown.Item>
+              <Dropdown.Item
+                className='edited-option'
+                onClick={orderLength}
+              >Cantidad de páginas asc
+              </Dropdown.Item>
+              <Dropdown.Item
+                className='edited-option'
+                onClick={orderRating}
+              >Mayor rating
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         </div>
-
-        <Dropdown>
-          <Dropdown.Toggle
-            className="edited-select">
-            Elige opción
-          </Dropdown.Toggle>
-
-          <Dropdown.Menu className="edited-menu">
-            <Dropdown.Item
-              className='edited-option'
-              onClick={orderAlf}
-            >Orden alfabético
-            </Dropdown.Item>
-            <Dropdown.Item
-              className='edited-option'
-              onClick={orderLength}
-            >Cantidad de páginas asc
-            </Dropdown.Item>
-            <Dropdown.Item
-              className='edited-option'
-              onClick={orderRating}
-            >Mayor rating
-            </Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
       </section>
 
       <section className='pt-4'>

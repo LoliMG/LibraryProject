@@ -9,6 +9,7 @@ import { AllBooks } from './pages/allBooks/AllBooks';
 import { OneBook } from './pages/oneBook/OneBook';
 import { ErrorPage } from './pages/ErrorPage/ErrorPage';
 import { OneAuthor } from './pages/oneAuthor/OneAuthor';
+import { AllAuthors } from './pages/allAuthors/AllAuthors';
 
 const initialValue = {
   img: "",
@@ -86,6 +87,7 @@ export const Library = () => {
     <BrowserRouter>
       <div className='common grid almendra-regular'>
         <LateralBar />
+        <div className='main'>
         <Routes>
           <Route
             path='/'
@@ -122,7 +124,13 @@ export const Library = () => {
             books={books}
             author={author}
           />} />
+
+          <Route path='/allAuthors' element={<AllAuthors
+            books={books}
+            author={author}
+          />} />
         </Routes>
+        </div>
       </div>
     </BrowserRouter>
   )
