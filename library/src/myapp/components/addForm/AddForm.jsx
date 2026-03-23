@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import './add.css';
 import { Card, Form } from 'react-bootstrap';
-import axios from 'axios'
+import axios from 'axios';
 
 export const AddForm = ({ setform, author, newBook, setNewBook }) => {
   const handleBook = (e) => {
@@ -13,7 +13,6 @@ export const AddForm = ({ setform, author, newBook, setNewBook }) => {
     try {
       const res = await axios.post('http://localhost:4000/api/addBook', newBook);
       console.log(res);
-
       setform(false);
     }
     catch (error) {
@@ -39,7 +38,6 @@ export const AddForm = ({ setform, author, newBook, setNewBook }) => {
         </Card.Header>
 
         <Card.Body className='pt-4 formbody violetText'>
-
           <Form.Group className="mb-3">
             <Form.Label>Título del libro <span className='text-danger'>*</span> </Form.Label>
             <Form.Control

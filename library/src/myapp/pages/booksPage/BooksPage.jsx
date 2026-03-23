@@ -9,7 +9,6 @@ export const BooksPage = ({ status, author, genre, books, newBook, setNewBook })
   /* filter by status */
   const [filter, setFilter] = useState('todos');
   const [search, setSearch] = useState("");
-
   const [filteredBooks, setFilteredBooks] = useState([]);
 
   const orderAlf = () => {

@@ -22,7 +22,7 @@ const initialValue = {
   seriesPosition: null,
   comment: "",
   author_id: ""
-}
+};
 
 export const Library = () => {
   const [books, setBooks] = useState([]);

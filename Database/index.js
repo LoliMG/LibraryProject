@@ -99,16 +99,11 @@ app.get("/api/library/alldata", async (req, res) => {
 
 /* Insert data from front to database */
 app.post('/api/addBook', async(req, res) => {
-  const {img, title, pages, rating, category, status, series, seriesPosition, comment, author_id} = req.body;
-  
+  const {img, title, pages, rating, category, status, series, seriesPosition, comment, author_id} = req.body;  
   try {
-    let sql = `INSERT INTO book (img, title, pages, rating, category, status, series, seriesPosition, comment, author_id) VALUES (?,?,?,?,?,?,?,?,?,?)`;
-   
-    let values = [img, title, pages, rating, category, status, series, seriesPosition, comment, author_id];
-   
+    let sql = `INSERT INTO book (img, title, pages, rating, category, status, series, seriesPosition, comment, author_id) VALUES (?,?,?,?,?,?,?,?,?,?)`;   
+    let values = [img, title, pages, rating, category, status, series, seriesPosition, comment, author_id];   
     let result = await connection.query(sql, values);
-    console.log(result);
-
     res.status(200).json("Data sent correctly.");
   }
   catch(error) {
@@ -116,17 +111,25 @@ app.post('/api/addBook', async(req, res) => {
   }
 })
 
+app.post('/api/addAuthor', async(req, res) => {
+  const {name} = req.body;
+  try {
+    let sql = `INSERT INTO author (name) VALUES (?)`;
+    let values = [name];
+    let result = await connection.query(sql, values);
+    res.status(200).json("Data sent correctly.");
+  } catch (error) {
+    res.status(500).json(error);
+  }
+})
+
+/* Edit data from front to database */
 app.post('/api/editBook', async(req, res) => {
   const {book_id, img, title, pages, rating, category, status, series, seriesPosition, comment, author_id} = req.body;
-
   try {
     let sql = `UPDATE book SET img=?, title=?, pages=?, rating=?, category=?, status=?, series=?, seriesPosition=?, comment=?, author_id=? WHERE book_id = ?`;
-
-    let values = [img, title, pages, rating, category, status, series, seriesPosition, comment, author_id, book_id];
-   
+    let values = [img, title, pages, rating, category, status, series, seriesPosition, comment, author_id, book_id];   
     let result = await connection.query(sql, values);
-    console.log(result);
-    
     res.status(200).json("Book updated correctly.");
   }
   catch(error) {
@@ -134,12 +137,6 @@ app.post('/api/editBook', async(req, res) => {
     res.status(500).json(error);
   }
 })
-
-/* Edit data from front to database */
-
-
-
-
 
 app.use(express.static(__dirname + "/public"));
 

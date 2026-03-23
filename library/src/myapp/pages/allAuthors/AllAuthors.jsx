@@ -2,11 +2,19 @@ import './allauthors.css';
 import { Accordion, InputGroup, Form } from 'react-bootstrap';
 import { Link } from 'react-router';
 import { useState } from 'react';
+import { useEffect } from 'react';
+import axios from 'axios';
+
+const initialValue = {
+  name: "",
+};
 
 export const AllAuthors = ({ books, author }) => {
   const [isHovered, setIsHovered] = useState(null);
   const [searchAuthor, setSearchAuthor] = useState("");
   const [filteredAuthors, setFilteredAuthors] = useState(author);
+  const [newAuthor, setNewAuthor] = useState(initialValue);
+  const [inputNewAuthor, setInputNewAuthor] = useState(false);
 
   const submit = () => {
     if (searchAuthor === "") {
@@ -21,9 +29,78 @@ export const AllAuthors = ({ books, author }) => {
     }
   }
 
+  /* fixes the empty list when reloading the page */
+  useEffect(() => {
+    setFilteredAuthors(author);
+  }, [author]);
+
+  const openInput = () => {
+    if (inputNewAuthor == true) {
+      setInputNewAuthor(false);
+    }
+    else {
+      setInputNewAuthor(true);
+    }
+  }
+
+  const handleAuthor = (e) => {
+    const { name, value } = e.target;
+    setNewAuthor({ ...newAuthor, [name]: value });
+  }
+
+  const addAuthor = async () => {
+    try {
+      const res = await axios.post('http://localhost:4000/api/addAuthor');
+      console.log(res);
+
+    } catch (error) {
+      console.log(error);
+    }
+    setInputNewAuthor(false);
+  }
+
   return (
     <div className='authors'>
-      <h2 className='title'>Escritores</h2>
+      <div className='headAuthors'>
+        <h2 className='title'>Escritores</h2>
+        <div className='addAuthorInput'>
+          {inputNewAuthor == true ?
+            <div className='addAuthorGroup'>
+              <Form.Group>
+                <Form.Control
+                  placeholder='Añadir un escritor'
+                  type="text"
+                  className='custominput'
+                  required
+                  name='title'
+                  value={newAuthor.title}
+                  onChange={handleAuthor}
+                />
+              </Form.Group>
+              <button
+                className='buttonLilac'
+                onClick={addAuthor}>
+                Enviar
+              </button>
+            </div>
+            : ""
+          }
+
+          {inputNewAuthor == true ?
+            <button
+              className='buttonOrange'
+              onClick={openInput}
+            >Cancelar
+            </button>
+            :
+            <button
+              className='buttonOrange'
+              onClick={openInput}
+            >Añadir
+            </button>
+          }
+        </div>
+      </div>
 
       <div className='authorBox'>
         <InputGroup>
@@ -53,7 +130,7 @@ export const AllAuthors = ({ books, author }) => {
 
       <Accordion className='authorsAccordion' defaultActiveKey="0">
         {filteredAuthors.map((elem, index) => (
-          <Accordion.Item eventKey={index.toString()} key={elem.author_id}>
+          <Accordion.Item eventKey={index.toString()} key={elem.author_id} >
             <Accordion.Header>
               {elem.authorname}
             </Accordion.Header>
@@ -70,7 +147,10 @@ export const AllAuthors = ({ books, author }) => {
                         /* hover just one of the titles */
                         onMouseEnter={() => setIsHovered(book.book_id)}
                         onMouseLeave={() => setIsHovered(null)}
-                      >{book.title}
+                      >{book.series != "" ?
+                        ` (${book.series}, libro ${book.seriesPosition}) `
+                        : ""}
+                        {book.title}
                       </Link>
                     ))
                   }

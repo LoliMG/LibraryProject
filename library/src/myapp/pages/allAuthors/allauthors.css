@@ -3,6 +3,47 @@
   flex-direction: column;
   gap: 1rem;
 
+  .headAuthors {
+    display: flex;
+    justify-content: space-between;
+
+    .addAuthorInput {
+      display: flex;
+      gap: 1rem;
+
+      .addAuthorGroup {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .buttonOrange {
+        height: 2.5rem;
+      }
+
+      .buttonLilac {
+        height: 2.5rem;
+        border-radius: 1rem;
+      }
+
+      .custominput {
+        background-color: var(--darkPurple3);
+        border: var(--darkBorder);
+        border-radius: 1rem;
+        color: var(--inputPurple);
+        height: 2.5rem;
+      }
+
+      .custominput::placeholder {
+        color: var(--inputPurple);
+      }
+
+      .custominput[type="file"]::file-selector-button {
+        background-color: var(--darkPurple);
+        color: white;
+      }
+    }
+  }
+
   .authorBox {
     background-color: var(--darkPurple);
     border: var(--darkBorder);
@@ -64,7 +105,7 @@
       }
 
       &:not(.collapsed) {
-        background-color: var(--inputPurple);
+        background-color: var(--darkPurple3);
         color: var(--golden);
       }
 
@@ -75,7 +116,7 @@
 
 
     .accordion-body {
-      background-color: var(--darkPurple3);
+      background-color: var(--inputPurple);
     }
   }
 

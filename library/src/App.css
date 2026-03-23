@@ -43,7 +43,6 @@
   grid-template-columns: 17rem 4fr;
 }
 
-
 /* BUTTONS */
 .buttonLilac {
   text-decoration: none;
@@ -53,7 +52,6 @@
   background-color: rgb(35, 39, 87);
   border: 1px solid rgb(150, 128, 205);
   border-radius: 0.5rem;
-  margin-right: 50px;
 
   &:hover {
     background-color: var(--darkPurple);

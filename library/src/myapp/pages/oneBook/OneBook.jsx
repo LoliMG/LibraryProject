@@ -88,7 +88,7 @@ export const OneBook = ({ books, author, newBook }) => {
       </div>
 
       <div className='text-center pt-4'>
-        <div>
+        <div className='d-flex gap-5 justify-content-center'>
           <Link className='buttonLilac'
             to={`/`}
           >Volver
