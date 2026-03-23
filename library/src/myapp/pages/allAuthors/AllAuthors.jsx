@@ -128,7 +128,7 @@ export const AllAuthors = ({ books, author }) => {
         </InputGroup>
       </div>
 
-      <Accordion className='authorsAccordion' defaultActiveKey="0">
+      <Accordion className='authorsAccordion'>
         {filteredAuthors.map((elem, index) => (
           <Accordion.Item eventKey={index.toString()} key={elem.author_id} >
             <Accordion.Header>
