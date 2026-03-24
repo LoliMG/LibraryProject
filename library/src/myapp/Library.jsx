@@ -1,6 +1,7 @@
 import { useEffect, useState, } from 'react';
 import '../App.css'
 import axios from 'axios';
+import { apiUrl } from '../apiBase';
 import { StatsPage } from './pages/statsPage/StatsPage';
 import { BrowserRouter, Routes, Route } from 'react-router';
 import { LateralBar } from './components/LateralBar/LateralBar';
@@ -34,7 +35,7 @@ export const Library = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get('http://localhost:4000/api/library/alldata');
+        const res = await axios.get(apiUrl('/api/library/alldata'));
         setBooks(res.data);
       }
       catch (err) {
@@ -47,7 +48,7 @@ export const Library = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get('http://localhost:4000/api/library/counts');
+        const res = await axios.get(apiUrl('/api/library/counts'));
         setStatus(res.data);
       }
       catch (err) {
@@ -60,7 +61,7 @@ export const Library = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get('http://localhost:4000/api/library/author');
+        const res = await axios.get(apiUrl('/api/library/author'));
         setAuthor(res.data);
       }
       catch (err) {
@@ -73,7 +74,7 @@ export const Library = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get('http://localhost:4000/api/library/genre');
+        const res = await axios.get(apiUrl('/api/library/genre'));
         setGenre(res.data);
       }
       catch (err) {

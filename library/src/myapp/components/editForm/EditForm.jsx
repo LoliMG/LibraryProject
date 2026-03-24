@@ -3,6 +3,7 @@ import './edit.css';
 import { Card, Form } from 'react-bootstrap';
 import { useState } from 'react';
 import axios from 'axios';
+import { apiUrl } from '../../../apiBase';
 
 
 export const EditForm = ({ author, book, setEditForm }) => {
@@ -15,7 +16,7 @@ export const EditForm = ({ author, book, setEditForm }) => {
 
   const submit = async () => {
     try {
-      const res = await axios.post('http://localhost:4000/api/editBook', editBook);
+      const res = await axios.post(apiUrl('/api/editBook'), editBook);
       console.log(res);
       window.location.reload();
       setEditForm(false);
