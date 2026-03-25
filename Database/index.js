@@ -99,7 +99,7 @@ app.get("/api/library/alldata", async (req, res) => {
 /* Citas */
 app.get("/api/library/quotes", async (req, res) => {
   let sql = `
-  SELECT quote.quote_id, quote.quote_text, book.title, book.author_id, author.name
+  SELECT quote.quote_id, quote.quote_text, book.book_id, book.title, book.author_id, author.name
   FROM quote
     LEFT JOIN book ON quote.book_id = book.book_id
     LEFT JOIN author ON book.author_id = author.author_id`;
@@ -138,15 +138,15 @@ app.post('/api/addAuthor', async(req, res) => {
 })
 
 app.post('/api/addQuote', async(req, res) => {
-  const {text, book_id} = req.body;
-try {
-  let sql = 'INSERT INTO quote (text, book_id) VAULES (?,?)';
-  let values = [text, book_id];
-  let result = await connection.query(sql, values);
-  res.status(200).json(error);
-} catch (error) {
-  res.status(500).json(error);
-}
+    const {quote_text, book_id} = req.body;
+  try {
+    let sql = 'INSERT INTO quote (quote_text, book_id) VALUES (?,?)';
+    let values = [quote_text, book_id];
+    let result = await connection.query(sql, values);
+    res.status(200).json("Quote added correctly.");
+  } catch (error) {
+    res.status(500).json(error);
+  }
 })
 
 /* Edit data from front to database */
@@ -165,16 +165,30 @@ app.post('/api/editBook', async(req, res) => {
 })
 
 app.post('/api/editQuote', async(req, res) => {
-  const {text, book_id} = req.body;
+  const {quote_text, book_id, quote_id} = req.body;
   try {
-    let sql = 'UPDATE quote SET text=?, book_id=?';
-    let values = [text, book_id];
+    let sql = 'UPDATE quote SET quote_text=?, book_id=? WHERE quote_id=?';
+    let values = [quote_text, book_id, quote_id];
+    let result = await connection.query(sql, values);
     res.status(200).json("Quote updated correctly.");
   } catch (error) {
     console.error('Error updating quote:', error);
     res.status(500).json(error);
   }
 })
+
+/* ELIMINAR */
+app.post('/api/deleteQuote', async(req, res) => {
+  const {quote_id} = req.body;
+  try {
+    let sql = 'DELETE FROM quote WHERE quote_id=?';
+    await connection.query(sql, [quote_id]);
+    res.status(200).json("Quote deleted correctly.");
+  } catch (error) {
+    console.error('Error deleting quote:', error);
+    res.status(500).json(error);
+  }
+});
 
 app.use(express.static(__dirname + "/public"));
 

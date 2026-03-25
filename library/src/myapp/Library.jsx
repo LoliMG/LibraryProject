@@ -10,7 +10,7 @@ import { OneBook } from './pages/oneBook/OneBook';
 import { ErrorPage } from './pages/ErrorPage/ErrorPage';
 import { OneAuthor } from './pages/oneAuthor/OneAuthor';
 import { AllAuthors } from './pages/allAuthors/AllAuthors';
-import {Quotes} from './pages/quotesPage/Quotes';
+import { Quotes } from './pages/quotesPage/Quotes';
 
 const initialValue = {
   img: "",
@@ -85,7 +85,7 @@ export const Library = () => {
     fetchData();
   }, []);
 
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -145,9 +145,10 @@ export const Library = () => {
               author={author}
             />} />
 
-             <Route path='/quotes' element={<Quotes
+            <Route path='/quotes' element={<Quotes
               author={author}
               quote={quote}
+              books={books}
             />} />
           </Routes>
         </div>

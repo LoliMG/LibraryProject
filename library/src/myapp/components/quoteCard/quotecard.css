@@ -54,6 +54,9 @@
   .quoteText {
     font-size: large;
     text-align: justify;
+    /* separación de línea */
+    white-space: pre-line;
+    line-height: 1.5;
   }
 
   .notHovered {
@@ -61,7 +64,24 @@
   }
 
   .footCard {
-    line-height: .5rem;
+    display: flex;
+    flex-direction: column;
     padding-top: 1rem;
+
+    .goldenText {
+      text-decoration: none;
+
+      &:hover {
+        color: rgb(255, 233, 188);
+      }
+    }
+
+    .violetText {
+      text-decoration: none;
+
+      &:hover {
+        color: rgb(255, 233, 188);
+      }
+    }
   }
 }

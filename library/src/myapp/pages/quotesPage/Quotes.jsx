@@ -1,41 +1,34 @@
 import './quotes.css';
-import axios from 'axios';
 import { useState } from 'react';
 import { QuoteCard } from '../../components/quoteCard/QuoteCard';
+import { QuoteAddModal } from '../../components/quoteModal/addQuote/QuoteAddModal';
 
-const initialValue = {
-  text: "",
-  book_id: null
-};
 
-export const Quotes = ({ quote }) => {
+export const Quotes = ({ quote, books }) => {
   /* Cuántas quotes hay guardadas */
   const quoteCount = quote.filter((item, index, self) =>
     index === self.findIndex(q => q.quote_id === item.quote_id)
   ).length;
 
-  const [newQuote, setNewQuote] = useState(initialValue);
-  const [form, setform] = useState(false);
+  const [modal, setModal] = useState(false);
 
   const handleForm = () => {
-    if (form == false) {
-      setform(true);
+    if (modal == false) {
+      setModal(true);
     }
     else {
-      setform(false);
-    }
-  }
-
-  const addQuote = async () => {
-    try {
-      const res = await axios.post('http://localhost:4000/api/addQuote', newQuote);
-    } catch (error) {
-      console.log(error);
+      setModal(false);
     }
   }
 
   return (
     <div className='quotes'>
+      {modal == true ?
+        <QuoteAddModal
+          modal={modal}
+          books={books}
+          handleForm={handleForm} />
+        : ""}
       <div className='quotesHeader'>
         <div>
           <h2 className='title'>Citas favoritas</h2>
@@ -57,6 +50,7 @@ export const Quotes = ({ quote }) => {
             <QuoteCard
               elem={elem}
               key={idx}
+              books={books}
             />
 
           )

@@ -24,7 +24,6 @@
     background-color: var(--darkPurple2);
     color: var(--inputPurple);
     border: var(--darkBorder);
-    ;
   }
 
   .custominput::placeholder {

@@ -16,7 +16,6 @@ export const EditForm = ({ author, book, setEditForm }) => {
   const submit = async () => {
     try {
       const res = await axios.post('http://localhost:4000/api/editBook', editBook);
-      console.log(res);
       window.location.reload();
       setEditForm(false);
     }

@@ -1,0 +1,32 @@
+
+.modal-header,
+.modal-footer {
+  border: none;
+}
+
+.modal-content {
+  background: var(--formBG);
+  color: white;
+  border: var(--darkBorder);
+  font-family: "Almendra", serif;
+}
+
+.custominput {
+  background-color: var(--darkPurple2);
+  color: var(--inputPurple);
+  border: var(--darkBorder);
+
+  &:focus {
+    background-color: var(--darkPurple2);
+    color: var(--inputPurple);
+  }
+
+  &::placeholder {
+    color: var(--inputPurple);
+  }
+}
+
+.custominput[type="file"]::file-selector-button {
+  background-color: var(--darkPurple);
+  color: white;
+}
