@@ -1,9 +1,27 @@
 .quotes {
+  .quotesHeader {
+    display: flex;
+    justify-content: space-between;
 
-  .quoteBox {
-    background-color: var(--darkPurple);
-    border: var(--darkBorder);
-    border-radius: 1rem;
-    padding: 2rem;
+    .textLarge {
+      font-size: large;
+    }
   }
+
+  .violetText {
+    font-size: 16px;
+  }
+
+  .buttonOrange {
+    padding: .5rem;
+    padding-inline: 2rem;
+  }
+
+  .quotesBox {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: left;
+  }
+
 }

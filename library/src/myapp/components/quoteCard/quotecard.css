@@ -1,0 +1,67 @@
+.quoteBox {
+  font-size: normal;
+  background-color: var(--darkPurple);
+  border: var(--darkBorder);
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 30rem;
+  position: relative;
+  padding-bottom: 1rem;
+
+
+  &:hover {
+    border-color: var(--golden);
+    transition: 1s;
+  }
+
+  .goldenText {
+    color: var(--golden);
+  }
+
+  .buttonsQuote {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    display: flex;
+    gap: 1rem;
+
+    .eraseButton {
+      padding-inline: .7rem;
+      height: 2.5rem;
+      border-radius: .5rem;
+      border: 1px solid rgba(255, 255, 255, 0.623);
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.301);
+        transition: 1s;
+      }
+    }
+
+    .editButton {
+      border: 1px solid rgba(255, 255, 255, 0.623);
+      border-radius: .5rem;
+      color: white;
+      padding-inline: .7rem;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.301);
+        color: var(--golden);
+        transition: 1s;
+      }
+    }
+  }
+
+  .quoteText {
+    font-size: large;
+    text-align: justify;
+  }
+
+  .notHovered {
+    visibility: hidden;
+  }
+
+  .footCard {
+    line-height: .5rem;
+    padding-top: 1rem;
+  }
+}

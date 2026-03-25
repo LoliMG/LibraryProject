@@ -7,6 +7,7 @@ dotenv.config();
 
 import {fileURLToPath} from 'url';
 import {dirname} from 'path';
+import { error } from 'console';
 
 /* IMPORTS */
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -39,7 +40,7 @@ app.get("/api/library/counts", async (req, res) => {
   `;
   try {
     let [rows] = await connection.query(sql);
-    res.status(200).json(rows[0] || { leyendo: 0, completado: 0 });
+    res.status(200).json(rows[0]);
   }
   catch (error) {
      console.error('Error en /api/library:', error);
@@ -96,6 +97,21 @@ app.get("/api/library/alldata", async (req, res) => {
   }
 });
 
+/* Citas */
+app.get("/api/library/quotes", async (req, res) => {
+  let sql = `
+  SELECT quote.quote_id, quote.quote_text, book.title, book.author_id, author.name
+  FROM quote
+    LEFT JOIN book ON quote.book_id = book.book_id
+    LEFT JOIN author ON book.author_id = author.author_id`;
+  try {
+    let [rows] = await connection.query(sql);
+    res.status(200).json(rows);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+})
+
 
 /* Insert data from front to database */
 app.post('/api/addBook', async(req, res) => {
@@ -123,6 +139,18 @@ app.post('/api/addAuthor', async(req, res) => {
   }
 })
 
+app.post('/api/addQuote', async(req, res) => {
+  const {text, book_id} = req.body;
+try {
+  let sql = 'INSERT INTO quote (text, book_id) VAULES (?,?)';
+  let values = [text, book_id];
+  let result = await connection.query(sql, values);
+  res.status(200).json(error);
+} catch (error) {
+  res.status(500).json(error);
+}
+})
+
 /* Edit data from front to database */
 app.post('/api/editBook', async(req, res) => {
   const {book_id, img, title, pages, rating, category, status, series, seriesPosition, comment, author_id} = req.body;
@@ -137,6 +165,18 @@ app.post('/api/editBook', async(req, res) => {
     res.status(500).json(error);
   }
 })
+
+/* app.post('/api/editQuote', async(req, res) => {
+  const {text, book_id} = req.body;
+  try {
+    let sql = 'UPDATE quote SET text=?, book_id=?';
+    let values = [text, book_id];
+    res.status(200).json("Quote updated correctly.");
+  } catch (error) {
+    console.error('Error updating quote:', error);
+    res.status(500).json(error);
+  }
+}) */
 
 app.use(express.static(__dirname + "/public"));
 

@@ -4,6 +4,7 @@
   min-height: 100dvh;
   padding: 2rem;
   font-size: large; 
+  position: static;
 
   .link {
     text-decoration: none;

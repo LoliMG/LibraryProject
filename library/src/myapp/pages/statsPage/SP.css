@@ -1,7 +1,5 @@
 .statspage {
-  font-size: large;
-
-  .stats {
+   .stats {
     display: grid;
     grid-template-columns: 1fr 4fr;
     gap: 3rem;

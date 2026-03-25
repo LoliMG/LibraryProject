@@ -10,6 +10,7 @@ import { OneBook } from './pages/oneBook/OneBook';
 import { ErrorPage } from './pages/ErrorPage/ErrorPage';
 import { OneAuthor } from './pages/oneAuthor/OneAuthor';
 import { AllAuthors } from './pages/allAuthors/AllAuthors';
+import { Quotes } from './pages/quotesPage/Quotes';
 
 const initialValue = {
   img: "",
@@ -29,6 +30,7 @@ export const Library = () => {
   const [status, setStatus] = useState([]);
   const [author, setAuthor] = useState([]);
   const [genre, setGenre] = useState([]);
+  const [quote, setQuote] = useState([]);
   const [newBook, setNewBook] = useState(initialValue);
 
   useEffect(() => {
@@ -83,53 +85,71 @@ export const Library = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get('http://localhost:4000/api/library/quotes');
+        setQuote(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <BrowserRouter>
       <div className='common grid almendra-regular'>
         <LateralBar />
         <div className='main'>
-        <Routes>
-          <Route
-            path='/'
-            element={<BooksPage
-              books={books}
-              status={status}
-              genre={genre}
-              author={author}
-              newBook={newBook}
-              setNewBook={setNewBook}
-            />
-            }>
-            <Route index element={<AllBooks />}></Route>
-          </Route>
-
-          <Route path='/book/:id' element={
-            <OneBook
-              books={books}
-              author={author}
-              newBook={newBook}
-              setNewBook={setNewBook}
-            />}></Route>
-          <Route
-            path='/stats'
-            element={
-              <StatsPage
+          <Routes>
+            <Route
+              path='/'
+              element={<BooksPage
                 books={books}
                 status={status}
+                genre={genre}
                 author={author}
-              />} />
-          <Route path="*" element={<ErrorPage />} />
+                newBook={newBook}
+                setNewBook={setNewBook}
+              />
+              }>
+              <Route index element={<AllBooks />}></Route>
+            </Route>
 
-          <Route path='/oneAuthor/:id' element={<OneAuthor
-            books={books}
-            author={author}
-          />} />
+            <Route path='/book/:id' element={
+              <OneBook
+                books={books}
+                author={author}
+                newBook={newBook}
+                setNewBook={setNewBook}
+              />}></Route>
+            <Route
+              path='/stats'
+              element={
+                <StatsPage
+                  books={books}
+                  status={status}
+                  author={author}
+                />} />
+            <Route path="*" element={<ErrorPage />} />
 
-          <Route path='/allAuthors' element={<AllAuthors
-            books={books}
-            author={author}
-          />} />
-        </Routes>
+            <Route path='/oneAuthor/:id' element={<OneAuthor
+              books={books}
+              author={author}
+            />} />
+
+            <Route path='/allAuthors' element={<AllAuthors
+              books={books}
+              author={author}
+            />} />
+
+            <Route path='/quotes' element={<Quotes
+              author={author}
+              quote={quote}
+            />} />
+
+          </Routes>
         </div>
       </div>
     </BrowserRouter>

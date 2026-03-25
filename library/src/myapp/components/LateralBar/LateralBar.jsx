@@ -15,7 +15,8 @@ export const LateralBar = () => {
       <div className='d-flex flex-column gap-3 pt-5'>
         <Link to={'/'} className='link violetText'> 🕮 Mi Colección</Link>
         <Link to={'/stats'} className='link violetText'> ෴ Estadísticas</Link>
-        <Link to={'/allAuthors'} className='link violetText'> ㋡  Autores</Link>
+        <Link to={'/allAuthors'} className='link violetText'> ㋡ Autores</Link>
+        <Link to={'/quotes'} className='link violetText'> ❞ Citas favoritas</Link>        
       </div>
     </div>
   )
