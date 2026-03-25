@@ -10,6 +10,7 @@ import { OneBook } from './pages/oneBook/OneBook';
 import { ErrorPage } from './pages/ErrorPage/ErrorPage';
 import { OneAuthor } from './pages/oneAuthor/OneAuthor';
 import { AllAuthors } from './pages/allAuthors/AllAuthors';
+import {Quotes} from './pages/quotesPage/Quotes';
 
 const initialValue = {
   img: "",
@@ -30,6 +31,7 @@ export const Library = () => {
   const [author, setAuthor] = useState([]);
   const [genre, setGenre] = useState([]);
   const [newBook, setNewBook] = useState(initialValue);
+  const [quote, setQuote] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -83,6 +85,19 @@ export const Library = () => {
     fetchData();
   }, []);
 
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get('http://localhost:4000/api/library/quotes');
+        setQuote(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <BrowserRouter>
       <div className='common grid almendra-regular'>
@@ -128,6 +143,11 @@ export const Library = () => {
             <Route path='/allAuthors' element={<AllAuthors
               books={books}
               author={author}
+            />} />
+
+             <Route path='/quotes' element={<Quotes
+              author={author}
+              quote={quote}
             />} />
           </Routes>
         </div>
