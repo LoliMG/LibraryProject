@@ -2,6 +2,7 @@ import Button from 'react-bootstrap/Button';
 import './add.css';
 import { Card, Form } from 'react-bootstrap';
 import axios from 'axios';
+import { apiUrl } from '../../../apiBase';
 
 export const AddForm = ({ setform, author, newBook, setNewBook }) => {
   const handleBook = (e) => {
@@ -11,7 +12,7 @@ export const AddForm = ({ setform, author, newBook, setNewBook }) => {
 
   const submit = async () => {
     try {
-      const res = await axios.post('http://localhost:4000/api/addBook', newBook);
+      const res = await axios.post(apiUrl('/api/addBook'), newBook);
       console.log(res);
       setform(false);
     }
