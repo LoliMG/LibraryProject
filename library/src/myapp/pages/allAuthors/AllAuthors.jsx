@@ -4,7 +4,6 @@ import { Link } from 'react-router';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
-import { apiUrl } from '../../../apiBase';
 
 const initialValue = {
   name: "",
@@ -51,7 +50,7 @@ export const AllAuthors = ({ books, author }) => {
 
   const addAuthor = async () => {
     try {
-      const res = await axios.post(apiUrl('/api/addAuthor'), newAuthor);
+      const res = await axios.post('http://localhost:4000/api/addAuthor');
       console.log(res);
 
     } catch (error) {

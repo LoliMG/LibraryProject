@@ -1,7 +1,6 @@
 import { useEffect, useState, } from 'react';
 import '../App.css'
 import axios from 'axios';
-import { apiUrl } from '../apiBase';
 import { StatsPage } from './pages/statsPage/StatsPage';
 import { BrowserRouter, Routes, Route } from 'react-router';
 import { LateralBar } from './components/LateralBar/LateralBar';
@@ -11,7 +10,6 @@ import { OneBook } from './pages/oneBook/OneBook';
 import { ErrorPage } from './pages/ErrorPage/ErrorPage';
 import { OneAuthor } from './pages/oneAuthor/OneAuthor';
 import { AllAuthors } from './pages/allAuthors/AllAuthors';
-import { Quotes } from './pages/quotesPage/Quotes';
 
 const initialValue = {
   img: "",
@@ -31,13 +29,12 @@ export const Library = () => {
   const [status, setStatus] = useState([]);
   const [author, setAuthor] = useState([]);
   const [genre, setGenre] = useState([]);
-  const [quote, setQuote] = useState([]);
   const [newBook, setNewBook] = useState(initialValue);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(apiUrl('/api/library/alldata'));
+        const res = await axios.get('http://localhost:4000/api/library/alldata');
         setBooks(res.data);
       }
       catch (err) {
@@ -50,7 +47,7 @@ export const Library = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(apiUrl('/api/library/counts'));
+        const res = await axios.get('http://localhost:4000/api/library/counts');
         setStatus(res.data);
       }
       catch (err) {
@@ -63,7 +60,7 @@ export const Library = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(apiUrl('/api/library/author'));
+        const res = await axios.get('http://localhost:4000/api/library/author');
         setAuthor(res.data);
       }
       catch (err) {
@@ -76,23 +73,11 @@ export const Library = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(apiUrl('/api/library/genre'));
+        const res = await axios.get('http://localhost:4000/api/library/genre');
         setGenre(res.data);
       }
       catch (err) {
         console.log(err);
-      }
-    };
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get('http://localhost:4000/api/library/quotes');
-        setQuote(res.data);
-      } catch (error) {
-        console.log(error);
       }
     };
     fetchData();
@@ -144,12 +129,6 @@ export const Library = () => {
               books={books}
               author={author}
             />} />
-
-            <Route path='/quotes' element={<Quotes
-              author={author}
-              quote={quote}
-            />} />
-
           </Routes>
         </div>
       </div>
