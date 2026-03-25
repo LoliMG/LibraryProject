@@ -36,6 +36,7 @@ export const QuoteCard = ({ elem, books }) => {
         handleEditForm={handleEditForm}
         books={books}
       />
+
       <h2 className='goldenText'>❞</h2>
       <div className={`buttonsQuote ${isHovered == true ? "" : "notHovered"} `}>
         <button

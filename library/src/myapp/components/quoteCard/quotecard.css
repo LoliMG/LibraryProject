@@ -8,7 +8,6 @@
   position: relative;
   padding-bottom: 1rem;
 
-
   &:hover {
     border-color: var(--golden);
     transition: 1s;
@@ -51,36 +50,38 @@
     }
   }
 
-  .quoteText {
-    font-size: large;
-    text-align: justify;
-    /* separación de línea */
-    white-space: pre-line;
-    line-height: 1.5;
-  }
-
   .notHovered {
     visibility: hidden;
   }
 
-  .footCard {
-    display: flex;
-    flex-direction: column;
-    padding-top: 1rem;
-
-    .goldenText {
-      text-decoration: none;
-
-      &:hover {
-        color: rgb(255, 233, 188);
-      }
+  .text {
+    .quoteText {
+      font-size: large;
+      text-align: justify;
+      /* separación de línea */
+      white-space: pre-line;
+      line-height: 1.5;
     }
 
-    .violetText {
-      text-decoration: none;
+    .footCard {
+      margin-top: auto;
+      display: flex;
+      flex-direction: column;
 
-      &:hover {
-        color: rgb(255, 233, 188);
+      .goldenText {
+        text-decoration: none;
+
+        &:hover {
+          color: rgb(255, 233, 188);
+        }
+      }
+
+      .violetText {
+        text-decoration: none;
+
+        &:hover {
+          color: rgb(255, 233, 188);
+        }
       }
     }
   }
